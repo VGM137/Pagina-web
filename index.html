@@ -22,8 +22,8 @@
         </div>
       </header>
 
-      <div class="menu">
-        <nav class="menu-icons">
+      <div class="bar-menu">
+        <nav class="bar-menu-icons">
           <ol>
             <li>
               <a class="guisado" href="#guisados"></a>
@@ -40,42 +40,101 @@
 
       <div class="contenido">
 
-        <div class="hero" id="guisados">
+        <div class="hero" id="hero">
           <form class="hero-imgContainer" action="index.html" method="post">
-            <img class="hero-img" src="images/sihaysihay.jpg" alt="" width="500px">
+            <img class="hero-img" src="images/sihaysihay.jpg" alt="" width="inherit">
           </form>
           <form class="hero-menu" action="index.html" method="post">
-            <img width="500px" class="hero-menuImg" src="images/guisados4-6-20.jpg" alt="">
+            <img width="inherit" class="hero-menuImg" src="images/menu-del-dia.jpg" alt="">
           </form>
         </div>
 
-        <section class="parrilla" id="especialidades">
-          <div class="title">
-            <h1>A la Parrilla</h1>
+        <section class="comanda">
+      
+          <div class='pregunta'>
+            <h1 class="pregunta-texto">¿Cuántos tacos quieres?</h1>
           </div>
-          <div class="parrilla-grid">
-            <form class="parrilla-menu" action="index.html" method="post">
-              <img class="parrilla-menuImg" width="300px" src="images/doble.jpg" alt="">
-            </form>
-            <form class="parrilla-mapa" action="index.html" method="post">
-              <img class="parrilla-mapaImg" width="300px" src="images/burrito.jpg" alt="">
-            </form>
-            <form class="parrilla-menu" action="index.html" method="post">
-              <img class="parrilla-menuImg" width="300px" src="images/hamburguesa.jpg" alt="">
-            </form>
-            <form class="parrilla-mapa" action="index.html" method="post">
-              <img class="parrilla-mapaImg" width="300px" src="images/cortes.jpg" alt="">
-            </form>
-            <form class="parrilla-menu" action="index.html" method="post">
-              <img class="parrilla-menuImg" width="300px" src="images/parrilla.jpg" alt="">
-            </form>
-            <form class="parrilla-mapa" action="index.html" method="post">
-              <img class="parrilla-mapaImg" width="300px" src="images/mapa2.jpg" alt="">
-            </form>
-          </div>
-        </section >
+          
+          <section class='menu' id="menu">
+            <fieldset class="elegir" id='elegir'>
+    
+              <div id="avisoTacos" class="avisoTacos">
+                <p id="textoTacos" class="textoTacos"></p>
+              </div>
+              <section class="platillos">
+                <form class="box">
+                  <label class="opcion" id=opcion1></label>
+                  <input class="opcionInput" id="opcion1Input" type="number" min="0" value="0" onchange="">
+                </form>
+                <form class="box">
+                  <label class="opcion" id=opcion2></label>
+                  <input class="opcionInput" id="opcion2Input" type="number" min="0" value="0">
+                </form>
+                <form class="box">
+                  <label class="opcion" id=opcion3></label>
+                  <input class="opcionInput" id="opcion3Input" type="number" min="0" value="0">
+                </form>
+              </section>
+    
+              <div id="avisoCheck" class="avisoCheck">
+                <p id="textoCheck" class="textoCheck"></p>
+              </div>
+              <section class="detalles">
+                <form class="check">
+                  <label class="option">Con todo</label>
+                  <input class="opcionBox" id="verificar1" type="checkbox" name="" value="">
+                </form>
+                <form class="check">
+                  <label class="option">Sin arroz</label>
+                  <input class="opcionBox" id="verificar2" type="checkbox" name="" value="">
+                </form>
+                <form name="check" class="check">
+                  <label class="option">Sin salsa</label>
+                  <input name="opcionBox" class="opcionBox" id="verificar3" type="checkbox" name="" value="">
+                </form>
+                <form class="check">
+                  <label class="option">Desarmados</label>
+                  <input class="opcionBox" id="verificar4" type="checkbox" name="" value="">
+                </form>
+              </section>
+              
+            </fieldset>
+    
+            <div id="agregarOrden" class="agregarOrden" >
+              <div class="agregar">
+                <i class="icon-add-outline"></i>
+                <p class="">Agregar nueva orden</p>
+              </div>
+            </div>
+             
+          </section>
 
+          <form class="boton">
+            <input class='ordenar' id="ordenar" type="button" name="Ordenar" value="Ordenar">
+          </form>
+          
+          <section class="ticket" id='ticket'>
+            <div class="tuOrden" id='tuOrden'>
+              <h2 class="pedido" id='pedido'></h2>
+              <p class='taco' id="uno"></p>
+              <p class='taco' id="dos"></p>
+              <p class='taco' id="tres"></p>
+              <p class='taco' id="cuatro"></p>
+              <p class='taco' id="cinco"></p>
+              <p class='conTodo' id='conTodo'></p>
+              <p class='sinArroz' id='sinArroz'></p>
+              <p class='sinSalsa' id='sinSalsa'></p>
+              <p class='desarmados' id='desarmados'></p>
+              <br>
+              <h3 class="costo" id='costo'></h3>
+              <p class='precio' id='precio'></p>
+            </div>
+          </section>
+            
+        </section>
+        
         <section class="contact" id="contact">
+
           <div class="pedidos">
             <div class="pedidos-texto">
               <h1 class="pedidos-texto">Haz tu pedido</h1>
@@ -87,10 +146,10 @@
               <a class="icono-redes" href=""><i class="icon-whatsapp"></i></a> <p>55 2894 7194</p>
             </div>
           </div>
+
         </section>
         
       </div>
-
 
       <footer class="footer">
         <div>
@@ -104,6 +163,8 @@
 
     </div>
 
-
   </body>
+  <script type="text/javascript" src="funciones.js" >
+
+  </script>
 </html>

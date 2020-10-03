@@ -9,6 +9,17 @@
   font-style: normal;
   font-display: block;
 }
+@font-face {
+  font-family: 'icomoon';
+  src:  url('../fonts2/icomoon.eot?8maj1t');
+  src:  url('../fonts2/icomoon.eot?8maj1t#iefix') format('embedded-opentype'),
+    url('../fonts2/icomoon.ttf?8maj1t') format('truetype'),
+    url('../fonts2/icomoon.woff?8maj1t') format('woff'),
+    url('../fonts2/icomoon.svg?8maj1t#icomoon') format('svg');
+  font-weight: normal;
+  font-style: normal;
+  font-display: block;
+}
 
 [class^="icon-"], [class*=" icon-"] {
   /* use !important to prevent issues with browser extensions that change fonts */
@@ -46,10 +57,15 @@
 .icon-twitter:before {
   content: "\ea96";
 }
+.icon-add-outline:before {
+  content: "\e900";
+  color: lightgray;
+}
 
 body{
   margin: 0;
   height: 1600px;
+  font-family: "Signika";
 /*  background-color: green;*/
 }
 h1,
@@ -112,7 +128,7 @@ ul{
 .container{
 /*   border: 1px solid red; */
   height: 100%;
-  min-height: 1800px;
+  min-height: 1000px;
 /*  max-width: 1000px;*/
   display: grid;
   grid-template-columns: 10% 90%;
@@ -181,7 +197,7 @@ body:hover::-webkit-scrollbar-thumb{
   align-items: center;
 }
 
-.menu{
+.bar-menu{
   grid-area: menu;
   width: inherit;
   height: inherit;
@@ -190,8 +206,8 @@ body:hover::-webkit-scrollbar-thumb{
   background-color: rgba(255, 0, 0, 1);
 
 }
-.menu-icons,
-.menu ol li {
+.bar-menu-icons,
+.bar-menu ol li {
   height: inherit;
 }
 .guisado, .especialidades, .contacto {
@@ -231,31 +247,197 @@ body:hover::-webkit-scrollbar-thumb{
   height: 100%;
   display: grid;
   grid-area: contenido;
-  grid-template-rows: 40% 50% 10%;
+  grid-template-rows: 35% auto 10%;
 /*   border: 1px solid red; */
 /*   overflow: scroll; */
 }
 .hero {
   max-width: 1000px;
-  height: 500px;
+  height: inherit;
   display: flex;
   align-items: center;
   margin: auto;
-  margin-top: 10px;
-  border-radius: 20px;
-  overflow: hidden;
-  object-fit: contain;
 }
 .hero-imgContainer{
+  display: flex;
+  align-items: center;
   width: 50%;
   height: 100%;
+  border-bottom-left-radius: 20px;
+  border-top-left-radius: 20px;
 }
 .hero-menu{
+  display: flex;
+  align-items: center;
   width: 50%;
   height: 100%;
+  border-bottom-right-radius: 20px;
+  border-top-right-radius: 20px;
 }
+.hero-img, .hero-menuImg{
+  height: 90%;
+  border-radius: inherit;
+  display: flex;
+  justify-content: center;
+}
+/* body{
+  font-family: sans-serif;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+}
+h1{
+  text-align: center
+} */
+.comanda{
+  width: 100%;
+  height: auto;
+  margin: 0 auto;
+  display: block;
+}
+  .pregunta, .pregunta-texto{
+    width: 100%;
+    margin: 10px auto;
+    justify-content: center;
+    text-align: center;
+  }
+  .menu{
+    width: 100%;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 250px;
+    grid-gap: 10px;
+    grid-auto-flow: row;
+  }
+  .elegir{
+    width: 80%;
+    height: 80%;
+    border-radius: 10px;
+    margin: auto;
+  }
+ /*    .avisoTacos{
+      display: none
+    } */
+    .platillos{
+      margin: 10px ;
+    }
+    .box{
+      width: inherit;
+      height: 40px;
+      align-items: center;
+      display: grid;
+      grid-template-columns: 70% 30%;
+      grid-auto-flow: row;
+      grid-template-areas: 'opcion opcionInput';
+    }
+      .opcion{
+        grid-area: opcion;
+        width: inherit;
+        margin: 5px;
+        margin-left: 20px;
+      }
+      .opcionInput{
+        grid-area: opcionInput;
+        width: 30px;
+        height: 30px;
+        margin: 0 auto;
+        text-align: center;
+      }
+      .avisoCheck, .avisoTacos{
+        display: none;
+        height: 35px;
+        align-items: center;
+        justify-content: center;
+        color: rgba(255,0,0,.8);
+      }
+      .detalles{
+        display: grid;
+        grid-template: 1fr 1fr / 1fr 1fr;
+        margin: 10px 20px 0 20px;
+      }
+        .check{
+          display: grid;
+          grid-template-columns: 65% 35%;
+          grid-template-rows: 100%;
+          grid-template-areas: 'option opcionBox';
+          align-items: center;
+        }
+        .option{
+          grid-area: option;
+          margin: 5px 0 5px 0px;
+        }
+        .opcionBox{
+          grid-area: opcionBox;
+        }
+      .boton{
+        width: 80px;
+        margin: 10px auto;
+        justify-self: center;
+      }
+    .agregarOrden{
+      width: 80%;
+      height: 80%;
+      margin: auto;
+      border: 3px dotted lightgray;
+      border-radius: 10px;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      display: flex;
+    }
+      .agregar{
+        height: 50%;
+        margin: auto;
+      }
+      .agregarOrden i{
+        font-size: 4em;
+        font-weight: 100;
+      }
+      .agregarOrden p{
+        font-size: 2em;
+        display: flex;
+        height: inherit;
+        margin: auto;
+        color: lightgray;
+      }  
 
-.parrilla{
+    .ordenar{
+/*       display: none; */
+      margin: 5 auto;
+      height: 40px;
+      width: inherit;
+      border-radius: 10px;
+      justify-self: center;
+      padding: 0;
+      font-size: 1.2em;
+    }
+  .ticket{
+    display: none;
+    width: 50%;
+    margin: 0 auto
+  }
+    .pedido{
+      text-align: center;
+    }
+    .tuOrden {
+      width: 50%;
+      margin: 0 auto;
+    }
+    .costo {
+      width: inherit;
+      margin: 5px;
+      margin-left: 20px;
+    }
+    .taco, .conTodo, .sinArroz, .sinSalsa, .desarmados, .precio{
+      width: inherit;
+      margin: 5px;
+      margin-left: 20px;
+    }
+
+/* .parrilla{
   display: block;
   margin: auto;
   width: 1000px;
@@ -273,7 +455,7 @@ body:hover::-webkit-scrollbar-thumb{
   margin: 10px auto;
   justify-content: center;
 }
-
+ */
 .pedidos{
   background-color: black;
   color: white;
