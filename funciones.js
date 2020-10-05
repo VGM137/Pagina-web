@@ -166,6 +166,42 @@ function servicios(){
 }
 console.log(Servicio)
 
+
+/*   const hero = document.getElementById('hero') */
+  const menuDelDia = document.getElementById('menu-del-dia')
+  /* const comanda = document.getElementById('comanda') */
+  const pregunta = document.getElementById('pregunta')
+/*   const conocenos = document.getElementById('conocenos') */
+  const contact = document.getElementById('contacto')
+/* hero.addEventListener('change', goHero())
+comanda.addEventListener('change', goComanda()) */
+/* conocenos.addEventListener('scroll', cambiarColor(conocenos))
+contact.addEventListener('scroll', cambiarColor(contact)) */
+function goHero(){
+    menuDelDia.classList.add('yellow')
+    pregunta.classList.remove('yellow')
+/*     conocenos.classList.remove('yellow') */
+    contact.classList.remove('yellow')
+  }
+  function goComanda(){
+    pregunta.classList.add('yellow')
+    menuDelDia.classList.remove('yellow')
+/*     conocenos.classList.remove('yellow')*/
+    contact.classList.remove('yellow')
+  }
+/*   function goConocenos(){
+    conocenos.classList.add('yellow')
+    menuDelDia.classList.remove('yellow')
+    pregunta.classList.remove('yellow')
+    contact.classList.remove('yellow')
+  } */
+  function goContact(){
+    contact.classList.add('yellow')
+    menuDelDia.classList.remove('yellow')
+    pregunta.classList.remove('yellow')
+/*     conocenos.classList.remove('yellow')
+ */}
+
 guisado1.innerHTML = menu[0].nombre
 guisado2.innerHTML = menu[1].nombre
 guisado3.innerHTML = menu[2].nombre

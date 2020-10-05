@@ -1,4 +1,4 @@
-@font-face {
+  @font-face {
   font-family: 'icomoon';
   src:  url('../fonts/icomoon.eot?ya3oka');
   src:  url('../fonts/icomoon.eot?ya3oka#iefix') format('embedded-opentype'),
@@ -64,8 +64,9 @@
 
 body{
   margin: 0;
-  height: 1600px;
+  height: 100%;
   font-family: "Signika";
+  overflow: hidden;
 /*  background-color: green;*/
 }
 h1,
@@ -94,7 +95,7 @@ h1{
   font-weight: 700;
   line-height: 120%;
   letter-spacing: 0px;
-  color: black;
+  color: inherit;
   text-align: left;
   margin: 0 auto;
   margin-left: 10px;
@@ -127,142 +128,153 @@ ul{
 
 .container{
 /*   border: 1px solid red; */
-  height: 100%;
-  min-height: 1000px;
+  height: 100vh;
+/*   min-height: 1000px; */
 /*  max-width: 1000px;*/
   display: grid;
-  grid-template-columns: 10% 90%;
-  grid-template-rows: 11% 83% 6%;
-  grid-template-areas: "header header"
-                       "menu contenido"
-                       "footer footer";
+  grid-template-columns: 20% 80%;
+/*   grid-template-rows: 90% 10%; */
+  grid-template-areas: "bar-menu contenido";
   justify-content: inherit;
   align-items: inherit;
 /*  margin: 0 auto;
   flex-wrap: inherit;
   flex: 1;*/
   position: relative;
+  background-color: rgb(230, 0, 0);
 }
-body::-webkit-scrollbar{
-  width: 10px;
-}
-body::-webkit-scrollbar-track{
-  background: rgba(211, 211, 211, 0);
-  border-radius: 5px;
-}
-body::-webkit-scrollbar-thumb{
-  background: rgba(128, 128, 128, 0);
-  border-radius: 5px;
-}
-body:hover::-webkit-scrollbar-track{
-  background: rgba(211, 211, 211, 1);
-}
-body:hover::-webkit-scrollbar-thumb{
-  background: rgba(128, 128, 128, 1);
-}
-
-.header {
-  background-color: black;
-  color: white;
-  margin: 0;
-/*   margin-bottom: 5px; */
-  display: flex;
-  justify-content: center;
-  height: 100%;
-  flex-wrap: wrap;
-  grid-area: header;
-/*   border: 1px solid red; */
-}
-.header-slogan{
-  width: 170px;
-  text-align: center;
-  position: absolute;
-  top: 125px;
-  margin: 10px;
-  margin-left: 20px
-}
-.header-logo {
-  width: auto;
-  height: 125px;
-  margin: 0 0 0 10px;
-}
-.header-logoImg {
-  width: inherit;
-  height: inherit;
-  margin: 0 22.5px 0 22.5px;
-}
-.header ol {
-  display: flex;
-  height: inherit;
-  align-items: center;
-}
-
 .bar-menu{
-  grid-area: menu;
+  margin: 30px;
+  border-radius: 20px;
+  grid-area: bar-menu;
   width: inherit;
-  height: inherit;
-/*   margin: 0 10px 0 0px; */
-/*   border: 1px solid red; */
-  background-color: rgba(255, 0, 0, 1);
-
+  max-height: inherit;
+  background-color: rgb(255, 255, 255);
+  display: block;
 }
 .bar-menu-icons,
 .bar-menu ol li {
   height: inherit;
 }
-.guisado, .especialidades, .contacto {
-  text-decoration: none;
-  height: 100px;
-  width: 100px;
-  display: block;
-/*   justify-content: center;
-  align-items: center; */
+.logo {
   margin: 10px auto;
-  color: white;
-  border: 1px solid black;
+  display: block;
+  justify-content: center;
+  align-items: center;
+  height: auto;
+}
+.logo-container {
+  width: auto;
+  height: 200px;
+  margin: 0 auto;
+  display: flex;
+}
+.logo-img {
+  width: inherit;
+  height: inherit;
+  margin: 0 auto;
+/*   margin: 0 22.5px 0 22.5px; */
+}
+.slogan{
+  width: 100%;
+  text-align: center;
+  margin: 10px auto;
+  font-size: 1.2em;
+}
+/* .header ol {
+  display: flex;
+  height: inherit;
+  align-items: center;
+} */
+.guisado, .pedir, .conocenos, .contacto {
+  display: flex;
+  text-decoration: none;
+  height: 40px;
+  width: 80%;
+  margin: 20px auto;
+  color: black;
   border-radius: 50px;
-  background-color: rgba(255, 0, 0, 1);
-
+  background-color: rgba(114, 114, 114, .2);
+  text-align: center;
+  justify-content: center;
+  align-items: center;
 }
 .guisado:hover{
-  height: 200px;
-  width: 200px;
-  border-radius: 100px;
-  background-color: red;
+  background-color: rgba(255, 206, 0, 1);
+  width: 110%;
+  border-bottom-left-radius: 0;
+  border-top-left-radius: 0;
+  height: 50px;
 }
-.especialidades:hover{
-  height: 200px;
-  width: 200px;
-  border-radius: 100px;
-  background-color: red;
+.pedir:hover{
+  background-color: rgba(255, 206, 0, 1);
+  width: 110%;
+  border-bottom-left-radius: 0;
+  border-top-left-radius: 0;
+  height: 50px;
+}
+.conocenos:hover{
+  background-color: rgba(255, 206, 0, 1);
+  width: 110%;
+  border-bottom-left-radius: 0;
+  border-top-left-radius: 0;
+  height: 50px;
 }
 .contacto:hover{
-  height: 200px;
-  width: 200px;
-  border-radius: 100px;
-  background-color: red;
+  background-color: rgba(255, 206, 0, 1);
+  width: 110%;
+  border-bottom-left-radius: 0;
+  border-top-left-radius: 0;
+  height: 50px;
+}
+.yellow{
+  background-color: rgba(255, 206, 0, 1);
+  width: 110%;
+  border-bottom-left-radius: 0;
+  border-top-left-radius: 0;
+  height: 50px;
 }
 
 .contenido{
-  height: 100%;
-  display: grid;
+  min-height: 720px;
+  height: auto;
+  width: 100%;
+  display: block;
   grid-area: contenido;
-  grid-template-rows: 35% auto 10%;
+/*   grid-template-rows: auto; */
 /*   border: 1px solid red; */
-/*   overflow: scroll; */
+  overflow: scroll;
+  overflow-x: hidden;
+}
+.contenido::-webkit-scrollbar{
+  width: 10px;
+}
+.contenido::-webkit-scrollbar-track{
+  background: rgba(211, 211, 211, 0);
+  border-radius: 5px;
+}
+.contenido::-webkit-scrollbar-thumb{
+  background: rgba(128, 128, 128, 0);
+  border-radius: 5px;
+}
+.contenido:hover::-webkit-scrollbar-track{
+  background: rgba(211, 211, 211, .6);
+}
+.contenido:hover::-webkit-scrollbar-thumb{
+  background: rgba(128, 128, 128, .6);
 }
 .hero {
-  max-width: 1000px;
-  height: inherit;
+  height: 400px;
+  width: fit-content;
   display: flex;
   align-items: center;
-  margin: auto;
+  margin: 30px auto;
 }
 .hero-imgContainer{
   display: flex;
   align-items: center;
   width: 50%;
-  height: 100%;
+  height: inherit;
   border-bottom-left-radius: 20px;
   border-top-left-radius: 20px;
 }
@@ -275,7 +287,7 @@ body:hover::-webkit-scrollbar-thumb{
   border-top-right-radius: 20px;
 }
 .hero-img, .hero-menuImg{
-  height: 90%;
+  height: 100%;
   border-radius: inherit;
   display: flex;
   justify-content: center;
@@ -292,10 +304,11 @@ h1{
   text-align: center
 } */
 .comanda{
-  width: 100%;
   height: auto;
+  width: 100%;
+  min-height: 500px;
   margin: 0 auto;
-  display: block;
+  display: inline-block;
 }
   .pregunta, .pregunta-texto{
     width: 100%;
@@ -308,15 +321,18 @@ h1{
     margin: 0 auto;
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
-    grid-template-rows: 250px;
+    grid-template-rows: minmax(100px, max-content);
     grid-gap: 10px;
     grid-auto-flow: row;
   }
   .elegir{
+    border: none;
     width: 80%;
-    height: 80%;
+    height: auto;
     border-radius: 10px;
     margin: auto;
+    background-color: white;
+
   }
  /*    .avisoTacos{
       display: none
@@ -379,9 +395,9 @@ h1{
       }
     .agregarOrden{
       width: 80%;
-      height: 80%;
-      margin: auto;
-      border: 3px dotted lightgray;
+      height: auto;
+      margin: 0 auto;
+      background-color: rgba(114, 114, 114, .2);
       border-radius: 10px;
       justify-content: center;
       align-items: center;
@@ -456,17 +472,38 @@ h1{
   justify-content: center;
 }
  */
-.pedidos{
-  background-color: black;
-  color: white;
-  height: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 0 20px;
-  flex-wrap: wrap;
-}
-.pedidos-texto{
+/*  .info{
+   width: 90%;
+   height: 500px;
+   margin: 20px auto;
+   color: white;
+   display: block;
+   border-radius: 10px;
+   background-color: rgba(114, 114, 114, .2);
+ } */
+ .contactMe{
+   height: auto;
+   width: 80%;
+   display: block;
+   border-top-left-radius: 20px;
+   border-top-right-radius: 20px;
+   margin: 0 auto;
+  }
+  .pedidos{
+    height: 100%;
+    width: 100%;
+    background-color: black;
+    color: white;
+    display: flex;
+    margin: 0 auto;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 20px;
+    flex-wrap: wrap;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+  }
+  .pedidos-texto{
   display: block;
 }
 .pedidos-texto{
@@ -494,13 +531,15 @@ h1{
 }
 
 .footer{
+  height: 100px;
+  width: 100%;
   grid-area: footer;
   color: white;
   background-color: black;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin: 0;
+  margin: 0 auto;
   padding: 0px 20px 0px 20px;
   flex-wrap: wrap;
 /*   border: 1px solid red; */
