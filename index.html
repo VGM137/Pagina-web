@@ -9,9 +9,9 @@
     <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100;0,400;0,700;1,100;1,400;1,700&family=Signika:wght@300;400;700&display=swap" rel="stylesheet">
   </head>
 
-  <body>
+  <body data-spy="scroll" data-target=".bar-menu">
 
-    <div class="container">
+    <div class="container" id="container"> 
 
 <!--       <header class="header">
         <div class="">
@@ -47,7 +47,7 @@
         </nav>
 
       </div>
-      <div id="contenido" class="contenido">
+      <div id="contenido" class="contenido" onscroll="changeBar()">
 
         <div class="hero" id="hero">
           <form class="hero-imgContainer" action="index.html" method="post">
@@ -172,7 +172,7 @@
           </footer>
         </section>
         
-
+        
   </body>
   <script type="text/javascript" src="funciones.js" >
 

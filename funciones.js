@@ -168,11 +168,11 @@ console.log(Servicio)
 
 
 /*   const hero = document.getElementById('hero') */
-  const menuDelDia = document.getElementById('menu-del-dia')
+  let menuDelDia = document.getElementById('menu-del-dia')
   /* const comanda = document.getElementById('comanda') */
-  const pregunta = document.getElementById('pregunta')
+  let pregunta = document.getElementById('pregunta')
 /*   const conocenos = document.getElementById('conocenos') */
-  const contact = document.getElementById('contacto')
+  let contact = document.getElementById('contacto')
 /* hero.addEventListener('change', goHero())
 comanda.addEventListener('change', goComanda()) */
 /* conocenos.addEventListener('scroll', cambiarColor(conocenos))
@@ -201,6 +201,32 @@ function goHero(){
     pregunta.classList.remove('yellow')
 /*     conocenos.classList.remove('yellow')
  */}
+ var contenido = document.getElementById('contenido')
+ var barMenu = document.getElementById('bar-menu')
+ var hero = document.getElementById('hero')
+ var comanda = document.getElementById('comanda')
+ var contactMe = document.getElementById('contactMe')
+
+
+
+ function resaltar(id){
+   id.classList.add('yellow')
+ }
+ function quitarResaltar(id){
+   id.classList.remove('yellow')
+ }
+
+ function changeBar(){
+  if(contenido.scrollTop < hero.offsetHeight){
+    resaltar(menuDelDia)
+  }if(contenido.scrollTop > hero.clientHeight-300){
+    quitarResaltar(menuDelDia)
+    resaltar(pregunta)
+  }if(contenido.scrollTop < comanda.clientHeight-400){
+    quitarResaltar(pregunta)
+  }
+}
+ 
 
 guisado1.innerHTML = menu[0].nombre
 guisado2.innerHTML = menu[1].nombre

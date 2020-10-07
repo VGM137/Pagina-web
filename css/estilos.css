@@ -245,6 +245,7 @@ ul{
 /*   border: 1px solid red; */
   overflow: scroll;
   overflow-x: hidden;
+  position: relative;
 }
 .contenido::-webkit-scrollbar{
   width: 10px;
