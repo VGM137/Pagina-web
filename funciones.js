@@ -1,37 +1,58 @@
 
-let chicharron = new comida('Chicharrón', 'Taco', 0, 50, 15.00)
-let suadero = new comida('Suadero', 'Taco', 0, 50, 15.00)
-let rajas = new comida('Rajas', 'Taco', 4, 50, 15.00)
-  let menu = []
-    let comidas = menu.push(chicharron, suadero, rajas)
 
-function comida(nombre, presentacion, picoso, cantidad, precio){
+
+/* const comida = (nombre, presentacion, picoso, cantidad, precio) => {
   this.nombre = nombre
   this.presentacion = presentacion
   this.picoso = picoso
   this.cantidad = cantidad
   this.precio = precio
-}
+} */
+let chicharron = {
+  nombre:'Chicharrón',
+  presentacion: 'Taco',
+  picoso: 0,
+  cantidad: 50,
+  precio: 15.00
+} 
+let suadero = {
+  nombre:'Suadero',
+  presentacion: 'Taco',
+  picoso: 0,
+  cantidad: 50,
+  precio: 15.00
+} 
+let rajas = {
+  nombre:'rajas',
+  presentacion: 'Taco',
+  picoso: 0,
+  cantidad: 50,
+  precio: 15.00
+} 
+/* let suadero = new comida('Suadero', 'Taco', 0, 50, 15.00)
+let rajas = new comida('Rajas', 'Taco', 4, 50, 15.00) */
+  let menu = []
+    let comidas = menu.push(chicharron, suadero, rajas)
 /* var nombreMenu = menu.map(function(menu){return ' ' + menu.nombre})
 var preciosMenu = menu.map(function(menu){return menu.precio})
  */
-const opcionInput = document.getElementsByClassName('opcionInput')
-const opcionUno = document.getElementById('opcion1Input')
-const opcionDos = document.getElementById('opcion2Input')
-const opcionTres = document.getElementById('opcion3Input')
+let opcionInput = document.getElementsByClassName('opcionInput')
+let opcionUno = document.getElementById('opcion1Input')
+let opcionDos = document.getElementById('opcion2Input')
+let opcionTres = document.getElementById('opcion3Input')
 
-const tuOrden = document.getElementById('tuOrden')
-const avisoTacos = document.getElementById('avisoTacos')
-const guisado1 = document.getElementById('opcion1')
-const guisado2 = document.getElementById('opcion2')
-const guisado3 = document.getElementById('opcion3')
+let tuOrden = document.getElementById('tuOrden')
+let avisoTacos = document.getElementById('avisoTacos')
+let guisado1 = document.getElementById('opcion1')
+let guisado2 = document.getElementById('opcion2')
+let guisado3 = document.getElementById('opcion3')
 /*   let formulario = document.getElementById('elegir')
   console.log(formulario) */
-const avisoCheck = document.getElementById('avisoCheck')
-const checkbox1 = document.getElementById('verificar1')
-const checkbox2 = document.getElementById('verificar2')
-const checkbox3 = document.getElementById('verificar3')
-const checkbox4 = document.getElementById('verificar4')
+let avisoCheck = document.getElementById('avisoCheck')
+let checkbox1 = document.getElementById('verificar1')
+let checkbox2 = document.getElementById('verificar2')
+let checkbox3 = document.getElementById('verificar3')
+let checkbox4 = document.getElementById('verificar4')
 checkbox1.addEventListener('change', this.cambio1)
 checkbox2.addEventListener('change', this.cambio2)
 checkbox3.addEventListener('change', this.cambio3)
@@ -47,7 +68,7 @@ let ticket = document.getElementById('ticket')
 
 class Servicio{
   constructor(){
-    this.comida
+    this.menu
     this.cambio1
     this.cambio2
     this.cambio3
@@ -61,13 +82,16 @@ class Servicio{
     this.convertirStringsANumeros
   }
 }
+class NuevoServicio extends Servicio{
+  
+}
   function nuevaOrden(){
-    var elegir = document.getElementById('elegir')
-    var enMenu = document.getElementById('menu')
-    var newOrder = elegir.cloneNode(true)
+    let elegir = document.getElementById('elegir')
+    let enMenu = document.getElementById('menu')
+    let newOrder = elegir.cloneNode(true)
     /*     enMenu.appendChild(newOrder) */
     enMenu.insertBefore(newOrder, agregarOrden)
-    let servicioNuevo = new Servicio()
+    let servicioNuevo = new NuevoServicio()
     console.log(servicioNuevo)
   }
  
@@ -178,16 +202,16 @@ comanda.addEventListener('change', goComanda()) */
 /* conocenos.addEventListener('scroll', cambiarColor(conocenos))
 contact.addEventListener('scroll', cambiarColor(contact)) */
 function goHero(){
-    menuDelDia.classList.add('yellow')
-    pregunta.classList.remove('yellow')
-/*     conocenos.classList.remove('yellow') */
-    contact.classList.remove('yellow')
+  resaltar(menuDelDia)
+  quitarResaltar(pregunta)
+  quitarResaltar(contact)
+  /*     conocenos.classList.remove('yellow') */
   }
   function goComanda(){
-    pregunta.classList.add('yellow')
-    menuDelDia.classList.remove('yellow')
-/*     conocenos.classList.remove('yellow')*/
-    contact.classList.remove('yellow')
+    resaltar(pregunta)
+    quitarResaltar(menuDelDia)
+    quitarResaltar(contact)
+    /*     conocenos.classList.remove('yellow')*/
   }
 /*   function goConocenos(){
     conocenos.classList.add('yellow')
@@ -196,16 +220,16 @@ function goHero(){
     contact.classList.remove('yellow')
   } */
   function goContact(){
-    contact.classList.add('yellow')
-    menuDelDia.classList.remove('yellow')
-    pregunta.classList.remove('yellow')
+    resaltar(contact)
+    quitarResaltar(menuDelDia)
+    quitarResaltar(pregunta)
 /*     conocenos.classList.remove('yellow')
  */}
- var contenido = document.getElementById('contenido')
- var barMenu = document.getElementById('bar-menu')
- var hero = document.getElementById('hero')
- var comanda = document.getElementById('comanda')
- var contactMe = document.getElementById('contactMe')
+let contenido = document.getElementById('contenido')
+let barMenu = document.getElementById('bar-menu')
+let hero = document.getElementById('hero')
+let comanda = document.getElementById('comanda')
+let contactMe = document.getElementById('contactMe')
 
 
 
@@ -216,7 +240,7 @@ function goHero(){
    id.classList.remove('yellow')
  }
 
- function changeBar(){
+ function changeBar(ev){
   if(contenido.scrollTop < hero.offsetHeight){
     resaltar(menuDelDia)
   }if(contenido.scrollTop > hero.clientHeight-300){
@@ -224,7 +248,13 @@ function goHero(){
     resaltar(pregunta)
   }if(contenido.scrollTop < comanda.clientHeight-400){
     quitarResaltar(pregunta)
+  }if(contenido.scrollTop >= contactMe.offsetTop-400){
+    resaltar(contact)
+    quitarResaltar(pregunta)
+  }if(contenido.scrollTop <= contactMe.offsetTop-400){
+    quitarResaltar(contact)
   }
+  console.log(ev)
 }
  
 

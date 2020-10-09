@@ -483,7 +483,7 @@ h1{
    background-color: rgba(114, 114, 114, .2);
  } */
  .contactMe{
-   height: auto;
+   height: 70%;
    width: 80%;
    display: block;
    border-top-left-radius: 20px;
@@ -491,7 +491,7 @@ h1{
    margin: 0 auto;
   }
   .pedidos{
-    height: 100%;
+    height: 80%;
     width: 100%;
     background-color: black;
     color: white;
@@ -504,52 +504,101 @@ h1{
     border-top-left-radius: 20px;
     border-top-right-radius: 20px;
   }
-  .pedidos-texto{
-  display: block;
-}
-.pedidos-texto{
-  color: white;
-}
-.pedidos-h2{
-  font-style: italic;
-}
-.social{
-  align-items: center;
-  display: flex;
-}
-.social i {
-  font-size: 2em;
-  display: inline-block;
-  align-items: center;
-  background-size: 50px 50px;
-  margin: 10px;
-}
-.social a{
-  color: white;
-}
-.social p{
-  font-size: 2em
-}
+    .pedidos-texto{
+      width: 40%;
+      height: 90%;
+      display: flex;
+      color: white;
+      align-items: center;
+    }
+    .pedidos-texto h1, h2{
+      color: white;
+      height: auto;
+      width: 90%;
+      margin: 5px auto;
+    }
+    .pedidos-form{
+      height: 100%;
+      width: 90%;
+      margin: 10px auto;
+      justify-content: center;
+      align-items: center;
+    }
+    .pedidos-mail{
+      height: 10%;
+      width: 90%;
+      margin: 10px auto;
+      display: flex;
+      border-radius: 5px;
+    }
+    .pedidos-mensaje{
+      height: 40%;
+      width: 90%;
+      margin: 10px auto;
+      display: flex;
+      border-radius: 5px;
+    }
+    .pedidos-button{
+      display: flex;
+      height: auto;
+      margin: 0 auto;
+      padding: 3px;
+      border-radius: 5px;
+      font-size: 1.2em;
+  /*     box-sizing: content-box; */
+    }
+    .social{
+      height: inherit;
+      width: 40%;
+      align-items: center;
+      display: grid;
+      margin: 0 auto;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+    }
+    .icono-redes{
+      width: 100%;
+      display: flex;
+      margin: auto;
+      align-items: center;
+      text-decoration: none;
+      font-family: "Signika";
+    }
+    .social i {
+      font-size: 2em;
+      display: block;
+      align-items: center;
+      background-size: 50px 50px;
+      margin: 10px;
+      text-decoration: none;
+    }
+    .social a{
+      color: white;
+    }
+    .social p{
+      font-size: 2em
+    }
 
-.footer{
-  height: 100px;
-  width: 100%;
-  grid-area: footer;
-  color: white;
-  background-color: black;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  margin: 0 auto;
-  padding: 0px 20px 0px 20px;
-  flex-wrap: wrap;
-/*   border: 1px solid red; */
-}
-.footer img{
-  vertical-align: middle;
-}
-.footer a {
-  color: white;
-  font-size: 1em
-}
+  .footer{
+    height: 20%;
+    width: 100%;
+    grid-area: footer;
+    color: white;
+    background-color: black;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: 0 auto;
+    padding: 0px 20px 0px 20px;
+    flex-wrap: wrap;
+  /*   border: 1px solid red; */
+  }
+  .footer img{
+    vertical-align: middle;
+  }
+  .footer a {
+    color: white;
+    font-size: 1em
+  }
  
