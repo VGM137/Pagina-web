@@ -68,6 +68,15 @@ let ticket = document.getElementById('ticket')
 
 class Servicio{
   constructor(){
+    debugger
+    inicializar()
+  }
+}
+/* class NuevoServicio extends Servicio{
+  
+} */
+  function inicializar(){
+    debugger
     this.menu
     this.cambio1
     this.cambio2
@@ -81,21 +90,19 @@ class Servicio{
     }
     this.convertirStringsANumeros
   }
-}
-class NuevoServicio extends Servicio{
-  
-}
   function nuevaOrden(){
+    debugger
     let elegir = document.getElementById('elegir')
     let enMenu = document.getElementById('menu')
     let newOrder = elegir.cloneNode(true)
     /*     enMenu.appendChild(newOrder) */
     enMenu.insertBefore(newOrder, agregarOrden)
-    let servicioNuevo = new NuevoServicio()
-    console.log(servicioNuevo)
+    let otroServicio = new Servicio
+    console.log(otroServicio)
   }
  
   function cambio1 () {
+    debugger
     if (checkbox1.checked){
       checkbox1.checked = true
       checkbox2.checked = false
@@ -106,18 +113,21 @@ class NuevoServicio extends Servicio{
     }
   }
   function cambio2(){
+    debugger
     if (checkbox2.checked){
       checkbox2.checked = true
       checkbox1.checked = false
     }
   }
   function cambio3(){
+    debugger
     if (checkbox3.checked){
       checkbox3.checked = true
       checkbox1.checked = false
     } 
   }
   function cambio4(){
+    debugger
     if (checkbox4.checked){
       checkbox4.checked = true
       checkbox1.checked = false
@@ -125,12 +135,14 @@ class NuevoServicio extends Servicio{
   }
 
   function convertirStringsANumeros(){
+    debugger
     this.o1 = parseInt(opcionUno.value)
     this.o2 = parseInt(opcionDos.value)
     this.o3 = parseInt(opcionTres.value)
   }
   
   function evaluar(ev){
+    debugger
     this.o1 = parseInt(opcionUno.value)
     this.o2 = parseInt(opcionDos.value)
     this.o3 = parseInt(opcionTres.value)
@@ -145,6 +157,7 @@ class NuevoServicio extends Servicio{
   }
    
 function levantarPedido() {
+  debugger
   this.convertirStringsANumeros()
   if(checkbox1.checked || checkbox2.checked || checkbox3.checked || checkbox4.checked){
     ticket.style.display = 'block'
@@ -172,6 +185,7 @@ function levantarPedido() {
 
 }
 function total(){
+  debugger
   this.o1 = this.o1 * menu[0].precio
   this.o2 = this.o2 * menu[1].precio
   this.o3 = this.o3 * menu[2].precio
@@ -190,49 +204,33 @@ function servicios(){
 }
 console.log(Servicio)
 
-
-/*   const hero = document.getElementById('hero') */
   let menuDelDia = document.getElementById('menu-del-dia')
-  /* const comanda = document.getElementById('comanda') */
   let pregunta = document.getElementById('pregunta')
-/*   const conocenos = document.getElementById('conocenos') */
   let contact = document.getElementById('contacto')
-/* hero.addEventListener('change', goHero())
-comanda.addEventListener('change', goComanda()) */
-/* conocenos.addEventListener('scroll', cambiarColor(conocenos))
-contact.addEventListener('scroll', cambiarColor(contact)) */
+
 function goHero(){
   resaltar(menuDelDia)
   quitarResaltar(pregunta)
   quitarResaltar(contact)
-  /*     conocenos.classList.remove('yellow') */
+
   }
   function goComanda(){
     resaltar(pregunta)
     quitarResaltar(menuDelDia)
     quitarResaltar(contact)
-    /*     conocenos.classList.remove('yellow')*/
+
   }
-/*   function goConocenos(){
-    conocenos.classList.add('yellow')
-    menuDelDia.classList.remove('yellow')
-    pregunta.classList.remove('yellow')
-    contact.classList.remove('yellow')
-  } */
   function goContact(){
     resaltar(contact)
     quitarResaltar(menuDelDia)
     quitarResaltar(pregunta)
-/*     conocenos.classList.remove('yellow')
- */}
+  }
+
 let contenido = document.getElementById('contenido')
 let barMenu = document.getElementById('bar-menu')
 let hero = document.getElementById('hero')
 let comanda = document.getElementById('comanda')
 let contactMe = document.getElementById('contactMe')
-
-
-
  function resaltar(id){
    id.classList.add('yellow')
  }
