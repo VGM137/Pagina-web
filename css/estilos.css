@@ -67,7 +67,6 @@ body{
   height: 100%;
   font-family: "Signika";
   overflow: hidden;
-/*  background-color: green;*/
 }
 h1,
 h2,
@@ -260,14 +259,16 @@ ul{
 .hero {
   height: 400px;
   width: fit-content;
-  display: flex;
+  display: grid;
+  grid-template-columns: 400px 400px;
+  grid-template-rows: 400px;
   align-items: center;
   margin: 30px auto;
 }
 .hero-imgContainer{
   display: flex;
   align-items: center;
-  width: 50%;
+  width: 100%;
   height: inherit;
   border-bottom-left-radius: 20px;
   border-top-left-radius: 20px;
@@ -275,7 +276,7 @@ ul{
 .hero-menu{
   display: flex;
   align-items: center;
-  width: 50%;
+  width: 100%;
   height: 100%;
   border-bottom-right-radius: 20px;
   border-top-right-radius: 20px;
@@ -479,7 +480,7 @@ h1{
    background-color: rgba(114, 114, 114, .2);
  } */
  .contactMe{
-   height: 70%;
+   height: 90%;
    width: 80%;
    display: block;
    border-top-left-radius: 20px;
@@ -487,7 +488,7 @@ h1{
    margin: 0 auto;
   }
   .pedidos{
-    height: 80%;
+    height: 85%;
     width: 100%;
     background-color: black;
     color: white;
@@ -495,7 +496,6 @@ h1{
     margin: 0 auto;
     align-items: center;
     justify-content: space-between;
-    padding: 0 20px;
     flex-wrap: wrap;
     border-top-left-radius: 20px;
     border-top-right-radius: 20px;
@@ -577,7 +577,7 @@ h1{
     }
 
   .footer{
-    height: 30%;
+    height: 15%;
     width: 100%;
     grid-area: footer;
     color: white;
@@ -586,19 +586,40 @@ h1{
     align-items: center;
     justify-content: space-between;
     margin: 0 auto;
-    padding: 0px 20px 0px 20px;
     flex-wrap: wrap;
   /*   border: 1px solid red; */
   }
   .footer img{
     vertical-align: middle;
+    height: 90%;
+    margin: auto;
   }
   .footer a {
     color: white;
     font-size: 1em
   }
+  .footer-logo{
+    height: 100%;
+    display: flex;
+    color: white
+  }
+  .footer-logo h3{
+    margin: auto;
+    color: white;
+    text-align: center;
+    align-items: center;
+  }
+  .footer-creator{
+    margin-right: 10px
+  }
 
   @media screen and (max-width: 768px){
+    h1{
+      font-size: 1.8em
+    }
+    h2{
+      1.5
+    }
     .container{
       height: 100vh;
       max-width: 100vw;
@@ -663,16 +684,54 @@ h1{
       width: auto;
     }
     .yellow{
+      background-color: rgba(255, 206, 0, 1);
       width: 100%;
-      border-bottom-left-radius: 20px;
-      border-bottom-right-radius: 20px;
-      border-top-right-radius:0 ;
-      border-top-left-radius:0 ;
-      height: 120%;
+      border-radius: 25px;
+      height: 40px;
     }
     .contenido::-webkit-scrollbar{
       display: none
     }
+    .hero {
+      height: 300px;
+      width: fit-content;
+      display: grid;
+      grid-template-columns: 300px 300px;
+      grid-template-rows: 300px;
+      align-items: center;
+      margin: 30px auto;
+    }
+    .detalles{
+      display: block
+    }
+    .contactMe{
+      height: 100%;
+      width: 100%;
+      display: block;
+      border-top-left-radius: 20px;
+      border-top-right-radius: 20px;
+      margin: 0 auto;
+     }
+       .pedidos-texto h1{
+         font-size: 1.2em
+         }
+       .pedidos-texto h2{
+         font-size: 1em
+       }
+       .social i {
+         font-size: 1.2em;
+         display: block;
+         align-items: center;
+         background-size: 50px 50px;
+         margin: 10px;
+         text-decoration: none;
+       }
+       .social a{
+         color: white;
+       }
+       .social p{
+         font-size: 1.2em
+       }
   }
   @media screen and (max-width: 320px){
     .container{
@@ -727,7 +786,7 @@ h1{
       margin: 15px auto;
     }
     .agregarOrden p{
-      font-size: .7em
+      font-size: 1em
     }
 
   }
