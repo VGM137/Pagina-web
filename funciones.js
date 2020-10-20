@@ -68,7 +68,6 @@ let ticket = document.getElementById('ticket')
 
 class Servicio{
   constructor(){
-    debugger
     inicializar()
   }
 }
@@ -76,7 +75,6 @@ class Servicio{
   
 } */
   function inicializar(){
-    debugger
     this.menu
     this.cambio1
     this.cambio2
@@ -91,7 +89,6 @@ class Servicio{
     this.convertirStringsANumeros
   }
   function nuevaOrden(){
-    debugger
     let elegir = document.getElementById('elegir')
     let enMenu = document.getElementById('menu')
     let newOrder = elegir.cloneNode(true)
@@ -102,7 +99,6 @@ class Servicio{
   }
  
   function cambio1 () {
-    debugger
     if (checkbox1.checked){
       checkbox1.checked = true
       checkbox2.checked = false
@@ -113,21 +109,18 @@ class Servicio{
     }
   }
   function cambio2(){
-    debugger
     if (checkbox2.checked){
       checkbox2.checked = true
       checkbox1.checked = false
     }
   }
   function cambio3(){
-    debugger
     if (checkbox3.checked){
       checkbox3.checked = true
       checkbox1.checked = false
     } 
   }
   function cambio4(){
-    debugger
     if (checkbox4.checked){
       checkbox4.checked = true
       checkbox1.checked = false
@@ -135,14 +128,12 @@ class Servicio{
   }
 
   function convertirStringsANumeros(){
-    debugger
     this.o1 = parseInt(opcionUno.value)
     this.o2 = parseInt(opcionDos.value)
     this.o3 = parseInt(opcionTres.value)
   }
   
   function evaluar(ev){
-    debugger
     this.o1 = parseInt(opcionUno.value)
     this.o2 = parseInt(opcionDos.value)
     this.o3 = parseInt(opcionTres.value)
@@ -156,8 +147,7 @@ class Servicio{
     console.log(ev)
   }
    
-function levantarPedido() {
-  debugger
+function levantarPedido(){ 
   this.convertirStringsANumeros()
   if(checkbox1.checked || checkbox2.checked || checkbox3.checked || checkbox4.checked){
     ticket.style.display = 'block'
@@ -185,7 +175,6 @@ function levantarPedido() {
 
 }
 function total(){
-  debugger
   this.o1 = this.o1 * menu[0].precio
   this.o2 = this.o2 * menu[1].precio
   this.o3 = this.o3 * menu[2].precio
