@@ -14,21 +14,21 @@ let chicharron = {
   picoso: 0,
   cantidad: 50,
   precio: 15.00
-} 
+}
 let suadero = {
   nombre:'Suadero',
   presentacion: 'Taco',
   picoso: 0,
   cantidad: 50,
   precio: 15.00
-} 
+}
 let rajas = {
   nombre:'rajas',
   presentacion: 'Taco',
   picoso: 0,
   cantidad: 50,
   precio: 15.00
-} 
+}
 /* let suadero = new comida('Suadero', 'Taco', 0, 50, 15.00)
 let rajas = new comida('Rajas', 'Taco', 4, 50, 15.00) */
   let menu = []
@@ -58,7 +58,7 @@ checkbox2.addEventListener('change', this.cambio2)
 checkbox3.addEventListener('change', this.cambio3)
 checkbox4.addEventListener('change', this.cambio4)
 let cambios = [cambio1, cambio2, cambio3, cambio4]
-let checkboxes = [checkbox1, checkbox2, checkbox3, checkbox4]  
+let checkboxes = [checkbox1, checkbox2, checkbox3, checkbox4]
 /*   var checkboxesChecked = checkboxes.map(function(checkboxes){return checkboxes.checked}) */
 const agregarOrden = document.getElementById('agregarOrden')
 agregarOrden.addEventListener('click', nuevaOrden)
@@ -72,7 +72,7 @@ class Servicio{
   }
 }
 /* class NuevoServicio extends Servicio{
-  
+
 } */
   function inicializar(){
     this.menu
@@ -97,7 +97,7 @@ class Servicio{
     let otroServicio = new Servicio
     console.log(otroServicio)
   }
- 
+
   function cambio1 () {
     if (checkbox1.checked){
       checkbox1.checked = true
@@ -118,13 +118,13 @@ class Servicio{
     if (checkbox3.checked){
       checkbox3.checked = true
       checkbox1.checked = false
-    } 
+    }
   }
   function cambio4(){
     if (checkbox4.checked){
       checkbox4.checked = true
       checkbox1.checked = false
-    } 
+    }
   }
 
   function convertirStringsANumeros(){
@@ -132,7 +132,7 @@ class Servicio{
     this.o2 = parseInt(opcionDos.value)
     this.o3 = parseInt(opcionTres.value)
   }
-  
+
   function evaluar(ev){
     this.o1 = parseInt(opcionUno.value)
     this.o2 = parseInt(opcionDos.value)
@@ -146,8 +146,8 @@ class Servicio{
     }
     console.log(ev)
   }
-   
-function levantarPedido(){ 
+
+function levantarPedido(){
   this.convertirStringsANumeros()
   if(checkbox1.checked || checkbox2.checked || checkbox3.checked || checkbox4.checked){
     ticket.style.display = 'block'
@@ -243,7 +243,7 @@ let contactMe = document.getElementById('contactMe')
   }
   console.log(ev)
 }
- 
+
 
 guisado1.innerHTML = menu[0].nombre
 guisado2.innerHTML = menu[1].nombre
