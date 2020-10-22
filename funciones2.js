@@ -23,14 +23,15 @@ let rajas = {
 let menu = []
   let comidas = menu.push(chicharron, suadero, rajas)
 
-  checkbox1 = document.getElementById('verificar1')
-  checkbox2 = document.getElementById('verificar2')
-  checkbox3 = document.getElementById('verificar3')
-  checkbox4 = document.getElementById('verificar4')
+  let checkbox1 = document.getElementById('verificar1')
+  let checkbox2 = document.getElementById('verificar2')
+  let checkbox3 = document.getElementById('verificar3')
+  let checkbox4 = document.getElementById('verificar4')
   checkbox1.addEventListener('change', cambio1)
   checkbox2.addEventListener('change', cambio2)
   checkbox3.addEventListener('change', cambio3)
   checkbox4.addEventListener('change', cambio4)
+
 
   let menuDelDia = document.getElementById('menu-del-dia')
   let pregunta = document.getElementById('pregunta')
@@ -52,7 +53,9 @@ let menu = []
   function inicializar(){
     this.elegir = document.getElementById('elegir')
     this.elegir.style.display = "block"
-
+    this.misOrdenes = insertarOrdenAArreglo(this.elegir)
+    let agregarOrden = document.getElementById('agregarOrden')
+    agregarOrden.addEventListener('click', nuevaOrden)  
     insetarMenu()
   }
   function insetarMenu(){
@@ -63,6 +66,25 @@ let menu = []
     this.guisado2.innerHTML = menu[1].nombre
     this.guisado3.innerHTML = menu[2].nombre
   }
+  function nuevaOrden(){
+    this.elegir = document.getElementById('elegir')
+    let enMenu = document.getElementById('menu')
+    this.newOrder = this.elegir.cloneNode(true)
+/*     this.newOrder = document.createElement('fieldset') */
+    /*     enMenu.appendChild(newOrder) */
+    enMenu.insertBefore(this.newOrder, agregarOrden)
+    insertarOrdenAArreglo(this.newOrder)    
+  }
+  function insertarOrdenAArreglo(orden){
+/*     debugger */
+    this.arregloDeOrdenes = []
+    const insertar = () => {
+      this.insertado = this.arregloDeOrdenes.push(orden)
+    }
+    insertar()
+    console.log(this.arregloDeOrdenes)
+  }
+
   function cambio1(){
     if (checkbox1.checked){
       checkbox1.checked = true
