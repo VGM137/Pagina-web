@@ -60,7 +60,7 @@ checkbox4.addEventListener('change', this.cambio4)
 let cambios = [cambio1, cambio2, cambio3, cambio4]
 let checkboxes = [checkbox1, checkbox2, checkbox3, checkbox4]
 /*   var checkboxesChecked = checkboxes.map(function(checkboxes){return checkboxes.checked}) */
-const agregarOrden = document.getElementById('agregarOrden')
+ 
 agregarOrden.addEventListener('click', nuevaOrden)
 const ordenar = document.getElementById("ordenar");
 ordenar.addEventListener("click", evaluar);
