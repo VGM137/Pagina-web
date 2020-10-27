@@ -36,145 +36,166 @@ let rajas = new comida('Rajas', 'Taco', 4, 50, 15.00) */
 /* var nombreMenu = menu.map(function(menu){return ' ' + menu.nombre})
 var preciosMenu = menu.map(function(menu){return menu.precio})
  */
-let opcionInput = document.getElementsByClassName('opcionInput')
-let opcionUno = document.getElementById('opcion1Input')
-let opcionDos = document.getElementById('opcion2Input')
-let opcionTres = document.getElementById('opcion3Input')
 
-let tuOrden = document.getElementById('tuOrden')
-let avisoTacos = document.getElementById('avisoTacos')
-let guisado1 = document.getElementById('opcion1')
-let guisado2 = document.getElementById('opcion2')
-let guisado3 = document.getElementById('opcion3')
+
+
 /*   let formulario = document.getElementById('elegir')
   console.log(formulario) */
-let avisoCheck = document.getElementById('avisoCheck')
-let checkbox1 = document.getElementById('verificar1')
-let checkbox2 = document.getElementById('verificar2')
-let checkbox3 = document.getElementById('verificar3')
-let checkbox4 = document.getElementById('verificar4')
-checkbox1.addEventListener('change', this.cambio1)
-checkbox2.addEventListener('change', this.cambio2)
-checkbox3.addEventListener('change', this.cambio3)
-checkbox4.addEventListener('change', this.cambio4)
-let cambios = [cambio1, cambio2, cambio3, cambio4]
+
+
+/*let cambios = [cambio1, cambio2, cambio3, cambio4]
 let checkboxes = [checkbox1, checkbox2, checkbox3, checkbox4]
 /*   var checkboxesChecked = checkboxes.map(function(checkboxes){return checkboxes.checked}) */
- 
-agregarOrden.addEventListener('click', nuevaOrden)
-const ordenar = document.getElementById("ordenar");
-ordenar.addEventListener("click", evaluar);
-let ticket = document.getElementById('ticket')
+
+
 
 class Servicio{
   constructor(){
-    inicializar()
+    this.inicializar()
   }
-}
+
 /* class NuevoServicio extends Servicio{
 
 } */
-  function inicializar(){
+  inicializar(){
     this.menu
     this.cambio1
     this.cambio2
     this.cambio3
     this.cambio4
-    this.levantarPedido
-    this.opcion = {
-      opcionUno,
-      opcionDos,
-      opcionTres
-    }
+    this.levantarPedido = this.levantarPedido.bind(this)
+
     this.convertirStringsANumeros
+
+    this.checkbox1 = document.getElementById('verificar1')
+    this.checkbox2 = document.getElementById('verificar2')
+    this.checkbox3 = document.getElementById('verificar3')
+    this.checkbox4 = document.getElementById('verificar4')
+    this.checkbox1.addEventListener('change', this.cambio1)
+    this.checkbox2.addEventListener('change', this.cambio2)
+    this.checkbox3.addEventListener('change', this.cambio3)
+    this.checkbox4.addEventListener('change', this.cambio4)
+    this.tuOrden = document.getElementById('tuOrden')
+
+
+    this.guisado1 = document.getElementById('opcion1')
+    this.guisado2 = document.getElementById('opcion2')
+    this.guisado3 = document.getElementById('opcion3')
+    this.guisado1.innerHTML = menu[0].nombre
+    this.guisado2.innerHTML = menu[1].nombre
+    this.guisado3.innerHTML = menu[2].nombre
+
+    this.agregarOrden = document.getElementById('agregarOrden')
+    this.agregarOrden.addEventListener('click', this.nuevaOrden)
+    this.ordenar = document.getElementById("ordenar");
+    this.ordenar.addEventListener("click", this.evaluar);
   }
-  function nuevaOrden(){
+    nuevaOrden(){
     let elegir = document.getElementById('elegir')
     let enMenu = document.getElementById('menu')
     let newOrder = elegir.cloneNode(true)
     /*     enMenu.appendChild(newOrder) */
-    enMenu.insertBefore(newOrder, agregarOrden)
+    enMenu.insertBefore(newOrder, this.agregarOrden)
     let otroServicio = new Servicio
     console.log(otroServicio)
   }
 
-  function cambio1 () {
-    if (checkbox1.checked){
-      checkbox1.checked = true
-      checkbox2.checked = false
-      checkbox3.checked = false
-      checkbox4.checked = false
+    cambio1 () {
+      this.checkbox1 = document.getElementById('verificar1')
+      this.checkbox2 = document.getElementById('verificar2')
+      this.checkbox3 = document.getElementById('verificar3')
+      this.checkbox4 = document.getElementById('verificar4')
+    if (this.checkbox1.checked){
+      this.checkbox1.checked = true
+      this.checkbox2.checked = false
+      this.checkbox3.checked = false
+      this.checkbox4.checked = false
     }else{
-      checkbox1.checked = false
+      this.checkbox1.checked = false
     }
   }
-  function cambio2(){
-    if (checkbox2.checked){
-      checkbox2.checked = true
-      checkbox1.checked = false
+    cambio2(){
+      this.checkbox1 = document.getElementById('verificar1')
+      this.checkbox2 = document.getElementById('verificar2')
+    if (this.checkbox2.checked){
+      this.checkbox2.checked = true
+      this.checkbox1.checked = false
     }
   }
-  function cambio3(){
-    if (checkbox3.checked){
-      checkbox3.checked = true
-      checkbox1.checked = false
+    cambio3(){
+      this.checkbox1 = document.getElementById('verificar1')
+      this.checkbox3 = document.getElementById('verificar3')
+    if (this.checkbox3.checked){
+      this.checkbox3.checked = true
+      this.checkbox1.checked = false
     }
   }
-  function cambio4(){
-    if (checkbox4.checked){
-      checkbox4.checked = true
-      checkbox1.checked = false
+    cambio4(){
+      this.checkbox1 = document.getElementById('verificar1')
+      this.checkbox4 = document.getElementById('verificar4')
+    if (this.checkbox4.checked){
+      this.checkbox4.checked = true
+      this.checkbox1.checked = false
     }
   }
 
-  function convertirStringsANumeros(){
-    this.o1 = parseInt(opcionUno.value)
-    this.o2 = parseInt(opcionDos.value)
-    this.o3 = parseInt(opcionTres.value)
+    convertirStringsANumeros(){
+      this.opcionUno = document.getElementById('opcion1Input')
+      this.opcionDos = document.getElementById('opcion2Input')
+      this.opcionTres = document.getElementById('opcion3Input')
+      this.avisoTacos = document.getElementById('avisoTacos')
+    this.o1 = parseInt(this.opcionUno.value)
+    this.o2 = parseInt(this.opcionDos.value)
+    this.o3 = parseInt(this.opcionTres.value)
   }
 
-  function evaluar(ev){
-    this.o1 = parseInt(opcionUno.value)
-    this.o2 = parseInt(opcionDos.value)
-    this.o3 = parseInt(opcionTres.value)
+    evaluar(){
+      this.opcionInput = document.getElementsByClassName('opcionInput')
+      this.opcionUno = document.getElementById('opcion1Input')
+      this.opcionDos = document.getElementById('opcion2Input')
+      this.opcionTres = document.getElementById('opcion3Input')
+      this.avisoTacos = document.getElementById('avisoTacos')
+    this.o1 = parseInt(this.opcionUno.value)
+    this.o2 = parseInt(this.opcionDos.value)
+    this.o3 = parseInt(this.opcionTres.value)
     this.ops = this.o1 + this.o2 + this.o3
       if(this.ops === 0){
-        avisoTacos.style.display = 'flex'
+        this.avisoTacos.style.display = 'flex'
         textoTacos.innerHTML = 'Debes pedir al menos un taco'
-      }else{
-        levantarPedido()
+      }if(this.ops > 0){
+        this.levantarPedido()
     }
-    console.log(ev)
   }
 
-function levantarPedido(){
+  levantarPedido(){
+  this.ticket = document.getElementById('ticket')
+  this.avisoCheck = document.getElementById('avisoCheck')
   this.convertirStringsANumeros()
-  if(checkbox1.checked || checkbox2.checked || checkbox3.checked || checkbox4.checked){
-    ticket.style.display = 'block'
+  if(this.checkbox1.checked || this.checkbox2.checked || this.checkbox3.checked || this.checkbox4.checked){
+    this.ticket.style.display = 'block'
     pedido.innerHTML = 'Pediste:'
+    this.total()
     if(this.o1 > 0){
       uno.innerHTML = `${this.o1} ${this.o1 < 2 ? 'taco':'tacos'} de ${menu[0].nombre}`
     }if(this.o2 > 0){
       dos.innerHTML = `${this.o2} ${this.o2 < 2 ? 'taco':'tacos'} de ${menu[1].nombre}`
     }if (this.o3 > 0){
       tres.innerHTML = `${this.o3} ${this.o3 < 2 ? 'taco':'tacos'} de ${menu[2].nombre}`
-    }if(checkbox1.checked){
+    }if(this.checkbox1.checked){
       conTodo.innerHTML = 'Con todo'
-    }if(checkbox2.checked){
+    }if(this.checkbox2.checked){
       sinArroz.innerHTML = 'Sin arroz'
-    }if(checkbox3.checked){
+    }if(this.checkbox3.checked){
       sinSalsa.innerHTML = 'Sin salsa'
-    }if(checkbox4.checked){
+    }if(this.checkbox4.checked){
       desarmados.innerHTML = 'Desarmados'
-    }
-    this.total()
   } else {
-    avisoCheck.style.display = 'flex'
+    this.avisoCheck.style.display = 'flex'
     textoCheck.innerHTML = 'Por favor indicanos como quieres tus tacos'
   }
-
 }
-function total(){
+}
+  total(){
   this.o1 = this.o1 * menu[0].precio
   this.o2 = this.o2 * menu[1].precio
   this.o3 = this.o3 * menu[2].precio
@@ -183,7 +204,7 @@ function total(){
   costo.innerHTML = 'Total:'
   precio.innerHTML = `$${this.total}.00`
 }
-
+}
 
 
 /*     console.log( uno, dos, tres)
@@ -243,8 +264,3 @@ let contactMe = document.getElementById('contactMe')
   }
   console.log(ev)
 }
-
-
-guisado1.innerHTML = menu[0].nombre
-guisado2.innerHTML = menu[1].nombre
-guisado3.innerHTML = menu[2].nombre
