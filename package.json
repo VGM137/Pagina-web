@@ -1,0 +1,23 @@
+{
+  "name": "pagina-web",
+  "version": "1.0.0",
+  "description": "Pagina web para pedidos en línea",
+  "main": "funciones2.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "live-server"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/VGM137/Pagina-web.git"
+  },
+  "author": "Victor Garza",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/VGM137/Pagina-web/issues"
+  },
+  "homepage": "https://github.com/VGM137/Pagina-web#readme",
+  "devDependencies": {
+    "live-server": "^1.2.1"
+  }
+}
