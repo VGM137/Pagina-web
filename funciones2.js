@@ -29,16 +29,16 @@ let arrayDeServicios = []
       this.inicializar()
     }
 
-  inicializar(){    
+  inicializar(){
     /* this.insertarMenu() */
     this.insertarFormulario()
 /*     arrayDeServicios.push(this.elegir)
-    
+
     this.agregarOrden = document.getElementById('agregarOrden')
     this.box = document.getElementById('box')
     this.check = document.getElementById('check')*/
     this.agregarOrden = document.getElementById('agregarOrden')
-    this.agregarOrden.addEventListener('click', this.insertarFormulario) 
+    this.agregarOrden.addEventListener('click', this.insertarFormulario)
 /*     console.log(this.arrayDeOrdenes)
     this.clearForm */
   }
@@ -113,7 +113,7 @@ let arrayDeServicios = []
           this.opcionInput.min = '0'
           this.opcionInput.value = '0'
           this.box.appendChild(this.opcionInput)
-      
+
       this.avisoCheck = document.createElement('div')
       this.avisoCheck.id = 'avisoCheck'
       this.avisoCheck.classList.add('avisoCheck')
@@ -187,7 +187,7 @@ let arrayDeServicios = []
           this.opcionBox4.classList.add('opcionBox')
           this.opcionBox4.type = 'checkbox'
           this.check4.appendChild(this.opcionBox4)
-      
+
 /*           this.guisado1 = document.getElementById('opcion1')
           this.guisado2 = document.getElementById('opcion2')
           this.guisado3 = document.getElementById('opcion3') */
@@ -195,7 +195,7 @@ let arrayDeServicios = []
           this.opcion2.innerHTML = menu[1].nombre
           this.opcion3.innerHTML = menu[2].nombre
 
-    
+
 /*     this.checkbox1 = document.getElementById('verificar1')
     this.checkbox2 = document.getElementById('verificar2')
     this.checkbox3 = document.getElementById('verificar3')
@@ -224,7 +224,7 @@ let arrayDeServicios = []
     }
     console.log(ev)
   }
-  
+
   cambio2(ev){
     this.checkbox1 = document.getElementById('verificar1')
     this.checkbox2 = document.getElementById('verificar2')
