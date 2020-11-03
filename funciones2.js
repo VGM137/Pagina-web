@@ -20,7 +20,7 @@ let menu = []
 /*   Servicio.prototype.push = function(){
     this.ordenes.push()
   } */
-  
+
   function newOrder (){
     let nuevaOrden = new Orden()
     ordenes.push(nuevaOrden)
@@ -164,7 +164,7 @@ let menu = []
           this.opcionInput.min = '0'
           this.opcionInput.value = '0'
           this.box.appendChild(this.opcionInput)
-      
+
           this.opcion1.innerHTML = opciones.nombre
         }
       }
