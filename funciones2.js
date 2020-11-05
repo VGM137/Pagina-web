@@ -1,13 +1,18 @@
-function Comida(nombre) {
+function Comida(nombre, precio, cantidad) {
   this.nombre = nombre
+  this.precio = precio
+  this.cantidad = cantidad
 }
 
-let chicharron = new Comida('Chicharrón')
-let suadero = new Comida('Suadero')
-let rajas = new Comida('Rajas')
+let chicharron = new Comida('Chicharrón', 15, 50)
+let suadero = new Comida('Suadero', 15, 50)
+let rajas = new Comida('Rajas', 15, 50)
 
-let menu = []
+  let menu = []
   let comidas = menu.push(chicharron, suadero, rajas)
+
+  let pedido = document.getElementById('pedido')
+  let costo = document.getElementById('costo')
 
   let ordenes = []
   class Servicio{
@@ -16,45 +21,6 @@ let menu = []
     this.agregarOrden = document.getElementById('agregarOrden')
     this.agregarOrden.onclick = newOrder
     }
-  }
-/*   Servicio.prototype.push = function(){
-    this.ordenes.push()
-  } */
-  
-  function newOrder (){
-    let nuevaOrden = new Orden()
-    ordenes.push(nuevaOrden)
-    console.log(ordenes)
-    ordenes.forEach(function(orden){
-      orden.opcionBox1.onclick = () => {
-      if (orden.opcionBox1.checked){
-          orden.opcionBox1.checked = true
-          orden.opcionBox2.checked = false
-          orden.opcionBox3.checked = false
-          orden.opcionBox4.checked = false
-        }else{
-          orden.opcionBox1.checked = false
-        }
-      }
-      orden.opcionBox2.onclick = () => {
-        if (orden.opcionBox2.checked){
-          orden.opcionBox2.checked = true
-          orden.opcionBox1.checked = false
-        }
-      }
-      orden.opcionBox3.onclick = () => {
-       if (orden.opcionBox3.checked){
-        orden.opcionBox3.checked = true
-        orden.opcionBox1.checked = false
-        }
-      }
-      orden.opcionBox4.onclick = () => {
-        if (orden.opcionBox4.checked){
-          orden.opcionBox4.checked = true
-          orden.opcionBox1.checked = false
-        }
-      }
-    })
   }
   class Orden{
     constructor(){
@@ -82,8 +48,8 @@ let menu = []
         this.avisoCheck.classList.add('avisoCheck')
         this.elegir.appendChild(this.avisoCheck)
           this.textoCheck = document.createElement('p')
-          this.textoCheck.id = `textoTacos`
-          this.textoCheck.classList.add('textoTacos')
+          this.textoCheck.id = `textoCheck`
+          this.textoCheck.classList.add('textoCheck')
           this.avisoCheck.appendChild(this.textoCheck)
         this.detalles = document.createElement('section')
         this.detalles.id = `detalles`
@@ -145,6 +111,7 @@ let menu = []
             this.opcionBox4.classList.add('opcionBox')
             this.opcionBox4.type = 'checkbox'
             this.check4.appendChild(this.opcionBox4)
+          this.evaluar
     }
     insertarOpciones(){
       for(let i = 0; i < menu.length; i++){
@@ -153,23 +120,129 @@ let menu = []
         this.box.id = `box`
         this.box.classList.add('box')
         this.platillos.appendChild(this.box)
-          this.opcion1 = document.createElement('label')
-          this.opcion1.id = `opcion1 `
-          this.opcion1.classList.add('opcion')
-          this.box.appendChild(this.opcion1)
+          this.opcion = document.createElement('label')
+          this.opcion.id = `opcion`
+          this.opcion.classList.add('opcion')
+          this.box.appendChild(this.opcion)
           this.opcionInput = document.createElement('input')
-          this.opcionInput.id = `opcion1Input `
+          this.opcionInput.id = `opcionInput`
           this.opcionInput.classList.add('opcionInput')
           this.opcionInput.type = 'number'
           this.opcionInput.min = '0'
           this.opcionInput.value = '0'
           this.box.appendChild(this.opcionInput)
       
-          this.opcion1.innerHTML = opciones.nombre
+          this.opcion.innerHTML = opciones.nombre
         }
       }
+    evaluar(){
+      this.plato = this.platillos.childNodes
+      this.valores(this.plato)
     }
+    valores(plato){
+      this.cantidades = []
+      for(let n = 0; n < menu.length; n++){
+        this.numeros = parseInt(plato[n].opcionInput.value)
+        this.cantidades.push(this.numeros)
+    }
+    this.verificarCantidad(this.cantidades)
+    console.log(this.cantidades)
+    }
+    verificarCantidad(cantidades){
+      let suma = 0
+      cantidades.forEach(function(a){suma += a;});
+      console.log(suma)
+      if(suma < 1){
+        this.avisoTacos.style.display = 'flex'
+        this.textoTacos.innerHTML = 'Debes pedir al menos un taco'
+      }else{
+        this.verificarCheck()
+      }
+    }
+    verificarCheck(){
+      if(this.opcionBox1.checked || this.opcionBox2.checked || this.opcionBox3.checked || this.opcionBox4.checked){
+        for(let i = 0; i < this.cantidades.length; i++){
+          this.numero = this.cantidades[i]
+          this.tacos = menu[i]
+          if(this.numero > 0){
+              this.formulario = document.createElement('h2')
+              this.formulario.classList.add('formulario')
+              this.formulario.innerHTML = 'Orden:'
+              pedido.appendChild(this.formulario)
+              this.ordenDePedido = document.createElement('p')
+              this.ordenDePedido.classList.add( 'orden-de-pedido')
+              this.formulario.appendChild(this.ordenDePedido)
+              this.ordenDePedido.innerHTML = `${this.numero} ${this.numero < 2 ? 'taco':'tacos'} de ${this.tacos.nombre}`
+              this.subtotal = this.numero * this.tacos.precio
+              arrayDeSubtotales.push(this.subtotal)
+          }
+        }
+      }else{
+        this.avisoCheck.style.display = 'flex'
+        this.textoCheck.innerHTML = 'Por favor indicanos como quieres tus tacos'
+      }
+    }
+  }
 
+  function newOrder (){
+      let nuevaOrden = new Orden()
+      ordenes.push(nuevaOrden)
+      console.log(ordenes)
+      ordenes.forEach(function(orden){
+        orden.opcionBox1.onclick = () => {
+        if (orden.opcionBox1.checked){
+            orden.opcionBox1.checked = true
+            orden.opcionBox2.checked = false
+            orden.opcionBox3.checked = false
+            orden.opcionBox4.checked = false
+          }else{
+            orden.opcionBox1.checked = false
+          }
+        }
+        orden.opcionBox2.onclick = () => {
+          if (orden.opcionBox2.checked){
+            orden.opcionBox2.checked = true
+            orden.opcionBox1.checked = false
+          }
+        }
+        orden.opcionBox3.onclick = () => {
+         if (orden.opcionBox3.checked){
+          orden.opcionBox3.checked = true
+          orden.opcionBox1.checked = false
+          }
+        }
+        orden.opcionBox4.onclick = () => {
+          if (orden.opcionBox4.checked){
+            orden.opcionBox4.checked = true
+            orden.opcionBox1.checked = false
+          }
+        }
+      })
+  }
+
+  let ordenar = document.getElementById('ordenar')
+  ordenar.addEventListener('click', validar)
+
+  function validar(){
+    for(let i = 0; i < ordenes.length; i++){
+      ordenes[i].evaluar()
+    }
+    console.log(arrayDeSubtotales)
+    total()
+  }
+  function total(){
+    let total = 0
+    arrayDeSubtotales.forEach(function(a){total += a;});
+    let price = document.createElement('h2')
+    price.classList.add('price')
+    costo.appendChild(price)
+    price.innerHTML = `$${total}.00`
+    ticket.style.display = 'block'
+  }
+  
+  let arrayDePlatos = []
+  let arrayDeValores = []
+  let arrayDeSubtotales = []
 
   let menuDelDia = document.getElementById('menu-del-dia')
   let pregunta = document.getElementById('pregunta')
@@ -187,18 +260,18 @@ let menu = []
     quitarResaltar(pregunta)
     quitarResaltar(contact)
 
-    }
-    function goComanda(){
+  }
+  function goComanda(){
       resaltar(pregunta)
       quitarResaltar(menuDelDia)
       quitarResaltar(contact)
 
-    }
-    function goContact(){
+  }
+  function goContact(){
       resaltar(contact)
       quitarResaltar(menuDelDia)
       quitarResaltar(pregunta)
-    }
+  }
 
   let contenido = document.getElementById('contenido')
   let barMenu = document.getElementById('bar-menu')
@@ -206,8 +279,7 @@ let menu = []
   let comanda = document.getElementById('comanda')
   let contactMe = document.getElementById('contactMe')
 
-
-    function changeBar(ev){
+  function changeBar(){
      if(contenido.scrollTop < hero.offsetHeight){
        resaltar(menuDelDia)
      }if(contenido.scrollTop > hero.clientHeight-300){
@@ -221,5 +293,5 @@ let menu = []
      }if(contenido.scrollTop <= contactMe.offsetTop-400){
        quitarResaltar(contact)
      }
-     console.log(ev)
-   }
+     console.log()
+  }
