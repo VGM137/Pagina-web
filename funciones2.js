@@ -15,11 +15,15 @@ let rajas = new Comida('Rajas', 15, 50)
   let costo = document.getElementById('costo')
 
   let ordenes = []
+
+  let agregarOrden = document.getElementById('agregarOrden')
+  agregarOrden.addEventListener('click', newOrder)
+
+  let ordenar = document.getElementById('ordenar')
+  ordenar.addEventListener('click', validar)
   class Servicio{
     constructor(){
     newOrder()
-    this.agregarOrden = document.getElementById('agregarOrden')
-    this.agregarOrden.onclick = newOrder
     }
   }
   class Orden{
@@ -150,7 +154,7 @@ let rajas = new Comida('Rajas', 15, 50)
     }
     verificarCantidad(cantidades){
       let suma = 0
-      cantidades.forEach(function(a){suma += a;});
+      cantidades.forEach(function(cantidad){suma += cantidad;});
       console.log(suma)
       if(suma < 1){
         this.avisoTacos.style.display = 'flex'
@@ -161,25 +165,53 @@ let rajas = new Comida('Rajas', 15, 50)
     }
     verificarCheck(){
       if(this.opcionBox1.checked || this.opcionBox2.checked || this.opcionBox3.checked || this.opcionBox4.checked){
-        for(let i = 0; i < this.cantidades.length; i++){
+        this.formulario = document.createElement('h2')
+        this.formulario.id = 'formulario'
+        this.formulario.classList.add('formulario')
+        this.formulario.innerHTML = 'Orden:'
+        pedido.appendChild(this.formulario)
+        for(let i = 0; i <= this.cantidades.length; i++){
           this.numero = this.cantidades[i]
           this.tacos = menu[i]
           if(this.numero > 0){
-              this.formulario = document.createElement('h2')
-              this.formulario.classList.add('formulario')
-              this.formulario.innerHTML = 'Orden:'
-              pedido.appendChild(this.formulario)
               this.ordenDePedido = document.createElement('p')
               this.ordenDePedido.classList.add( 'orden-de-pedido')
               this.formulario.appendChild(this.ordenDePedido)
               this.ordenDePedido.innerHTML = `${this.numero} ${this.numero < 2 ? 'taco':'tacos'} de ${this.tacos.nombre}`
               this.subtotal = this.numero * this.tacos.precio
-              arrayDeSubtotales.push(this.subtotal)
+              arrayDeSubtotales.push(this.subtotal) 
           }
         }
-      }else{
+        if(this.opcionBox1.checked){
+          this.detail = document.createElement('p') 
+          this.detail.id = 'detail'
+          this.detail.classList.add('detail')
+          this.detail.innerHTML = 'Con todo'
+          this.formulario.appendChild(this.detail)
+        }if(this.opcionBox2.checked){
+          this.detail = document.createElement('p') 
+          this.detail.id = 'detail'
+          this.detail.classList.add('detail')
+          this.detail.innerHTML = 'Sin arroz'
+          this.formulario.appendChild(this.detail)
+        }if(this.opcionBox3.checked){
+          this.detail = document.createElement('p') 
+          this.detail.id = 'detail'
+          this.detail.classList.add('detail')
+          this.detail.innerHTML = 'Sin salsa'
+          this.formulario.appendChild(this.detail)
+        }if(this.opcionBox4.checked){
+          this.detail = document.createElement('p') 
+          this.detail.id = 'detail'
+          this.detail.classList.add('detail')
+          this.detail.innerHTML = 'Desarmados'
+          this.formulario.appendChild(this.detail)
+        }
+        listo.push('Orden')
+      } else {
         this.avisoCheck.style.display = 'flex'
         this.textoCheck.innerHTML = 'Por favor indicanos como quieres tus tacos'
+        this.eliminarCantidades = this.cantidades.splice(0, this.cantidades.length)
       }
     }
   }
@@ -220,17 +252,15 @@ let rajas = new Comida('Rajas', 15, 50)
       })
   }
 
-  let ordenar = document.getElementById('ordenar')
-  ordenar.addEventListener('click', validar)
-
   function validar(){
     for(let i = 0; i < ordenes.length; i++){
       ordenes[i].evaluar()
     }
-    console.log(arrayDeSubtotales)
     total()
   }
+
   function total(){
+    if(listo.length === ordenes.length){
     let total = 0
     arrayDeSubtotales.forEach(function(a){total += a;});
     let price = document.createElement('h2')
@@ -238,12 +268,25 @@ let rajas = new Comida('Rajas', 15, 50)
     costo.appendChild(price)
     price.innerHTML = `$${total}.00`
     ticket.style.display = 'block'
+    console.log(ordenes)
+    ordenar.removeEventListener('click', validar)
+    agregarOrden.removeEventListener('click', newOrder)
+    }else{
+      var eliminarPlatos = arrayDePlatos.splice(0, arrayDePlatos.length)
+      var eliminarValores = arrayDeValores.splice(0,arrayDeValores.length)
+      var eliminarSubtotales = arrayDeSubtotales.splice(0, arrayDeSubtotales.length)
+      var eliminarListo = listo.splice(0, listo.length)
+      let formulario = document.getElementById('formulario')
+      pedido.removeChild(formulario)
+    }    
   }
-  
+
   let arrayDePlatos = []
   let arrayDeValores = []
   let arrayDeSubtotales = []
+  let listo = []
 
+  
   let menuDelDia = document.getElementById('menu-del-dia')
   let pregunta = document.getElementById('pregunta')
   let contact = document.getElementById('contacto')
@@ -295,3 +338,4 @@ let rajas = new Comida('Rajas', 15, 50)
      }
      console.log()
   }
+

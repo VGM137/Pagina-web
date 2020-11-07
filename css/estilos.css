@@ -438,7 +438,7 @@ h1{
   }
     .tuOrden {
       width: 100%;
-      margin: 0 auto;
+      margin: 50px auto;
     }
     .pedido{
       text-align: left;
@@ -446,7 +446,7 @@ h1{
     .formulario{
       font-size: 1em;
     }
-    .orden-de-pedido{
+    .orden-de-pedido, .detail{
       margin: 5px auto;
     }
     .costo {
@@ -458,12 +458,12 @@ h1{
       font-size: 1em;
       margin: 5px auto;
     }
-    .taco, .conTodo, .sinArroz, .sinSalsa, .desarmados, .precio{
+/*     .taco, .conTodo, .sinArroz, .sinSalsa, .desarmados, .precio{
       width: inherit;
       margin: 5px;
       margin-left: 20px;
     }
-
+ */
 /* .parrilla{
   display: block;
   margin: auto;
