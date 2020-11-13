@@ -319,13 +319,16 @@ h1{
     grid-template-rows: minmax(200px, max-content);
     grid-gap: 10px;
     grid-auto-flow: row;
+    box-sizing: border-box;
   }
   .elegir{
     border: none;
-    width: 80%;
+    width: 90%;
     height: auto;
     border-radius: 10px;
     margin: auto;
+    margin-bottom: 10px;
+    padding: 10px 20px;
     background-color: white;
     display: block;
     box-shadow: 0px 0px 16px 0px #626262;
@@ -337,26 +340,68 @@ h1{
       margin: 10px ;
     }
     .box{
-      width: inherit;
-      height: 40px;
+      width: 90%;
+      height: 70px;
+      margin: auto;
+      margin-bottom: 20px;
       align-items: center;
       display: grid;
-      grid-template-columns: 70% 30%;
+      grid-template-columns: 50% 30% 20%;
+      grid-template-rows: 50% 50%;
       grid-auto-flow: row;
-      grid-template-areas: 'opcion opcionInput';
+      grid-template-areas: 'opcion opcionInput up'
+                           'opcion opcionInput down';
     }
       .opcion{
         grid-area: opcion;
-        width: inherit;
-        margin: 5px;
-        margin-left: 20px;
+        width: 100%;
+        margin: auto 5px;
       }
       .opcionInput{
         grid-area: opcionInput;
-        width: 30px;
-        height: 30px;
+        width: 50%;
+        height: 60%;
         margin: 0 auto;
         text-align: center;
+        border-top: none;
+        border-right: none;
+        border-bottom: 2px solid #d9d9d9;
+        border-left: none;
+      }
+      .opcionInput::-webkit-inner-spin-button {
+        -webkit-appearance: none;
+      }
+      .up{
+        display: flex;
+        grid-area: up;
+        height: 30px;
+        width: 30px;
+        border-radius: 50%;
+        border: none;
+        outline: none;
+        margin: auto;
+        font-size: 1.5em;
+        text-align: center;
+        justify-content: center;
+        align-items: center;
+        color: white;
+        background-color: rgba(65, 65, 65, 0.5);
+      }
+      .down{
+        display: flex;
+        grid-area: down;
+        height: 30px;
+        width: 30px;
+        border-radius: 50%;
+        border: none;
+        outline: none;
+        margin: auto;
+        font-size: 1.5em;
+        text-align: center;
+        justify-content: center;
+        align-items: center;
+        color: white;
+        background-color: rgba(184, 184, 184, 0.5);
       }
       .avisoCheck, .avisoTacos{
         display: none;
@@ -374,6 +419,7 @@ h1{
       }
         .check{
           display: grid;
+          margin: 15px;
           grid-template-columns: 85% 15%;
           grid-template-rows: 100%;
           grid-template-areas: 'option opcionBox';
@@ -388,15 +434,15 @@ h1{
           justify-self: right
         }
       .boton{
-        width: 80px;
+        width: 150px;
         margin: 10px auto;
         justify-self: center;
       }
     .agregarOrden{
       width: 80%;
-      height: auto;
+      height: 80%;
       min-height: 200px;
-      margin: 0 auto;
+      margin:  auto;
       background-color: rgba(114, 114, 114, .2);
       border-radius: 10px;
       justify-content: center;
@@ -405,7 +451,7 @@ h1{
       display: flex;
     }
       .agregar{
-        height: 50%;
+        height: auto;
         margin: auto;
       }
       .agregarOrden i{
@@ -415,83 +461,156 @@ h1{
       .agregarOrden p{
         font-size: 2em;
         display: flex;
-        height: inherit;
+        height: auto;
         margin: auto;
         color: lightgray;
       }
+      .siguiente{
+        display: flex;
+        margin: 0 auto;
+        height: 40px;
+        width: auto;
+        border-radius: 10px;
+        justify-self: center;
+        padding: auto 5px;
+        font-size: 1.2em;
+      }
 
-    .ordenar{
-/*       display: none; */
-      margin: 5 auto;
-      height: 40px;
-      width: inherit;
+    .info-cliente{
+      width: 50%;
+      background: #fff;
       border-radius: 10px;
-      justify-self: center;
-      padding: 0;
-      font-size: 1.2em;
-    }
-  .ticket{
-    display: none;
-    width: 50%;
-    margin: 0 auto;
-    font-size: 1em;
-  }
-    .tuOrden {
-      width: 100%;
+      padding: 35px;
       margin: 50px auto;
+      box-sizing: border-box;
+      box-shadow: 0px 0px 16px 0px #626262;
     }
-    .pedido{
-      text-align: left;
-    }
-    .formulario{
+      *, ::after, ::before{
+        box-sizing: inherit;
+      }
+      .entrar-informacion{
+        border: none;
+        width: 100%
+      }
+      .titulo-informacion{
+        display: block;
+        font-size: 2em;
+        color: #333;
+        line-height: 1.2;
+        text-align: center;
+        padding-bottom: 44px;
+      }
+      .descripcion-informacion{
+        display: block;
+        font-size: 1.2em;
+        color: #333;
+        line-height: 1.2;
+        text-align: center;
+        
+      }
+      .info{
+        display: grid;
+        grid-template-rows: 1fr 1fr 1fr;
+        grid-gap: 5px;
+      }
+      .reactivo{
+        width: 100%;
+        position: relative;
+        border-bottom: 2px solid #d9d9d9;
+        padding-bottom: 0px;
+        margin-bottom: 27px;
+      }
+      .entrada-nombre{
+        color: #333;
+        line-height: 1.5;
+        padding-left: 5px;
+      }
+      .entrada{
+        display: block;
+        width: 100%;
+        height: 40px;
+        background: 0 0;
+        font-size: 18px;
+        color: #666;
+        line-height: 1.2;
+        padding: 0 10px;
+        outline: none;
+        border: none;
+        margin-top: 10px;
+        touch-action: manipulation;
+      }
+      .numero::-webkit-inner-spin-button {
+        -webkit-appearance: none;
+      }
+      .focus-input{
+        position: absolute;
+        display: block;
+        width: 100%;
+        height: 100%;
+        top: 0;
+        left: 0;
+        pointer-events: none;
+      }
+      .focus-input::before{
+        content: "";
+        display: block;
+        position: absolute;
+        bottom: -2px;
+        left: 0;
+        width: 0;
+        height: 2px;
+        -webkit-transition: all .4s;
+        -o-transition: all .4s;
+        -moz-transition: all .4s;
+        transition: all .4s;
+        background: #7f7f7f;
+        box-sizing: inherit;
+      }
+      .botonOrdenar{
+        display: flex;
+        width: 150px;
+        margin: 10px auto;
+        justify-self: center;
+      }
+      .ordenar{
+        display: block;
+        margin: 0 auto;
+        height: 40px;
+        width: auto;
+        border-radius: 10px;
+        justify-self: center;
+        padding: auto 5 px;
+        font-size: 1.2em;
+      }
+    .ticket{
+      display: none;
+      width: 50%;
+      margin: 0 auto;
       font-size: 1em;
     }
-    .orden-de-pedido, .detail{
-      margin: 5px auto;
-    }
-    .costo {
-      width: inherit;
-      margin: 5px;
-      margin-left: 20px;
-    }
-    .price{
-      font-size: 1em;
-      margin: 5px auto;
-    }
-/*     .taco, .conTodo, .sinArroz, .sinSalsa, .desarmados, .precio{
-      width: inherit;
-      margin: 5px;
-      margin-left: 20px;
-    }
- */
-/* .parrilla{
-  display: block;
-  margin: auto;
-  width: 1000px;
-}
-.title{
-  height: 100px;
-  width: 910px;
-  margin: 0 auto;
-}
-.parrilla-grid{
-  display: grid;
-  grid-template-columns: repeat(3, 300px);
-  grid-template-rows: repeat(2, 300px);
-  grid-gap: 5px;
-  margin: 10px auto;
-  justify-content: center;
-}
- */
-/*  .info{
-   width: 90%;
-   height: 500px;
-   margin: 20px auto;
-   color: white;
-   display: block;
-   border-radius: 10px;
-   background-color: rgba(114, 114, 114, .2);
- } */
+      .tuOrden {
+        width: 100%;
+        margin: 50px auto;
+      }
+      .pedido{
+        text-align: left;
+      }
+      .formulario{
+        font-size: 1em;
+      }
+      .orden-de-pedido, .detail{
+        margin: 5px auto;
+      }
+      .costo {
+        width: inherit;
+        margin: 5px;
+        margin-left: 20px;
+      }
+      .price{
+        font-size: 1em;
+        margin: 5px auto;
+      }
+
  .contactMe{
    height: auto;
    width: 80%;
@@ -713,6 +832,22 @@ h1{
       align-items: center;
       margin: 30px auto;
     }
+    .menu{
+      grid-template-columns: 1fr 1fr;
+    }
+    .elegir{
+      width: 80%
+    }
+    .box{
+      height: 85px;
+    }
+    .up, .down{
+      height: 40px;
+      width: 40px;
+    }
+    .opcionInput{
+      width: 60%;
+    }
     .avisoCheck, .avisoTacos{
       font-size: .9em;
     }
@@ -802,10 +937,15 @@ h1{
       margin: 10px auto;
     }
     .elegir{
+      width: 90%;
       margin: 15px auto;
     }
     .agregarOrden p{
       font-size: 1em
+    }
+    .info-cliente{
+      width: 90%;
+      padding: 20px;
     }
     .contactMe{
       height: auto;

@@ -21,6 +21,14 @@ let rajas = new Comida('Rajas', 15, 50)
 
   let ordenar = document.getElementById('ordenar')
   ordenar.addEventListener('click', validar)
+  
+
+  let nombre = document.getElementById('nombre')
+  let direccion = document.getElementById('direccion')
+  let telefono = document.getElementById('telefono')
+
+  /* let ordenar = document.getElementById('botonOrdenar') */
+  
   class Servicio{
     constructor(){
     newOrder()
@@ -135,8 +143,25 @@ let rajas = new Comida('Rajas', 15, 50)
           this.opcionInput.min = '0'
           this.opcionInput.value = '0'
           this.box.appendChild(this.opcionInput)
+          this.up = document.createElement('button')
+          this.up.id = `up`
+          this.up.classList.add('up')
+          this.up.type = 'button' 
+          this.up.innerText = '+' 
+          this.box.appendChild(this.up)
+          /*             this.plus = document.createElement('i')
+          this.plus.classList.add('icon-add-outline')
+          this.up.appendChild(this.plus) */
+          this.down = document.createElement('button')
+          this.down.id = `down`
+          this.down.classList.add('down')
+          this.down.type = 'button' 
+          this.down.innerText = '-' 
+          this.box.appendChild(this.down)
       
           this.opcion.innerHTML = opciones.nombre
+
+          
         }
       }
     evaluar(){
@@ -250,17 +275,73 @@ let rajas = new Comida('Rajas', 15, 50)
           }
         }
       })
-  }
+      ordenes.forEach(function (orden){
+        let cliente = orden
+        for(let i = 0; i < menu.length; i++){
+          let comida = cliente.platillos.childNodes[i]
+          let suma = comida.up
+          suma.onclick = () => comida.opcionInput.value++
+        }
+        for(let i = 0; i < menu.length; i++){
+          let comida = cliente.platillos.childNodes[i]
+          let resta = comida.down
+          resta.onclick = () => comida.opcionInput.value -= 1 ? comida.opcionInput.value >0  : false
+        }
+      }) 
+    
+  } 
 
   function validar(){
     for(let i = 0; i < ordenes.length; i++){
       ordenes[i].evaluar()
     }
-    total()
+    informacion()
   }
 
-  function total(){
-    if(listo.length === ordenes.length){
+  function informacion(){
+    if(!nombre.value.length == 0){
+      info.push(nombre.value)
+    }else{
+      info.splice(0, info.length)
+      console.log('escribe tu nombre')
+    }
+    if(!direccion.value.length == 0){
+      info.push(direccion.value)
+    } else {
+      info.splice(0, info.length)
+      console.log('escribe tu direccion')
+    }
+    if(telefono.value.length == 10){
+      info.push(telefono.value)
+      console.log(info)
+    } else {
+      info.splice(0, info.length)
+      console.log('escribe tu numero')
+    }
+      order()
+  }
+
+  function order(){
+    if(listo.length === ordenes.length & info.length == 3){
+      agregarOrden.removeEventListener('click', newOrder)
+      /* infoCliente.style.display = 'flex'
+      siguiente.removeEventListener('click', validar)
+      ordenar.style.display = 'flex'*/
+      ordenar.removeEventListener('click', validar) 
+      desplegarTicket()
+    }else{
+      var eliminarPlatos = arrayDePlatos.splice(0, arrayDePlatos.length)
+      var eliminarValores = arrayDeValores.splice(0, arrayDeValores.length)
+      var eliminarSubtotales = arrayDeSubtotales.splice(0, arrayDeSubtotales.length)
+      var eliminarListo = listo.splice(0, listo.length)
+      let formulario = document.getElementById('formulario')
+      if(formulario){
+        pedido.removeChild(formulario)
+      }
+    }
+  }
+
+  function desplegarTicket(){
     let total = 0
     arrayDeSubtotales.forEach(function(a){total += a;});
     let price = document.createElement('h2')
@@ -269,21 +350,13 @@ let rajas = new Comida('Rajas', 15, 50)
     price.innerHTML = `$${total}.00`
     ticket.style.display = 'block'
     console.log(ordenes)
-    ordenar.removeEventListener('click', validar)
-    agregarOrden.removeEventListener('click', newOrder)
-    }else{
-      var eliminarPlatos = arrayDePlatos.splice(0, arrayDePlatos.length)
-      var eliminarValores = arrayDeValores.splice(0,arrayDeValores.length)
-      var eliminarSubtotales = arrayDeSubtotales.splice(0, arrayDeSubtotales.length)
-      var eliminarListo = listo.splice(0, listo.length)
-      let formulario = document.getElementById('formulario')
-      pedido.removeChild(formulario)
-    }    
+    ordenar.removeEventListener('click', desplegarTicket)
   }
 
   let arrayDePlatos = []
   let arrayDeValores = []
   let arrayDeSubtotales = []
+  let info = []
   let listo = []
 
   
@@ -322,20 +395,20 @@ let rajas = new Comida('Rajas', 15, 50)
   let comanda = document.getElementById('comanda')
   let contactMe = document.getElementById('contactMe')
 
-  function changeBar(){
+  function changeBar(ev){
      if(contenido.scrollTop < hero.offsetHeight){
        resaltar(menuDelDia)
-     }if(contenido.scrollTop > hero.clientHeight-300){
+     }if(contenido.scrollTop >= hero.clientHeight){
        quitarResaltar(menuDelDia)
        resaltar(pregunta)
-     }if(contenido.scrollTop < comanda.clientHeight-400){
+     } else {
        quitarResaltar(pregunta)
-     }if(contenido.scrollTop >= contactMe.offsetTop-400){
+     }if(contenido.scrollTop >= hero.scrollHeight + comanda.scrollHeight*.70){
+       quitarResaltar(pregunta)
        resaltar(contact)
-       quitarResaltar(pregunta)
-     }if(contenido.scrollTop <= contactMe.offsetTop-400){
+     } else { 
        quitarResaltar(contact)
      }
-     console.log()
+     console.log(ev)
   }
 
