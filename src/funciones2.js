@@ -311,7 +311,6 @@ let huevosCocidos = new Comida('Huevos cocidos', 15, 50)
     }else{
       aviso1.style.display = 'block'
       info.splice(0, info.length)
-      console.log('escribe tu nombre')
     }
     if(!direccion.value.length == 0){
       if(aviso2){
@@ -321,7 +320,6 @@ let huevosCocidos = new Comida('Huevos cocidos', 15, 50)
     } else {
       aviso2.style.display = 'block'
       info.splice(0, info.length)
-      console.log('escribe tu direccion')
     }
     if(telefono.value.length == 10){
       if(aviso3){
@@ -332,13 +330,11 @@ let huevosCocidos = new Comida('Huevos cocidos', 15, 50)
     } else {
       aviso3.style.display = 'block'
       info.splice(0, info.length)
-      console.log('escribe tu numero')
     }
       order()
   }
 
   function order(){
-    debugger
     if(listo.length === ordenes.length & info.length == 3){
       agregarOrden.removeEventListener('click', newOrder)
       /* infoCliente.style.display = 'flex'
