@@ -8,29 +8,21 @@ let rajas = new Comida('Rajas', 15, 50)
 
 let menu = []
 let comidas = Servicio.menu.push(chicharron, suadero, rajas) */
+let body = document.getElementById('body')
+body.onload = function nuevoServicio(){
+  new Servicio({ el: ordenes, plugins: [new Orden()] })
+}
 
 let ordenes = []
 
-function nuevoServicio(){
-  new Servicio({ el: ordenes, op: menu })
-}
-nuevoServicio()
-
-
-
-
 let pedido = document.getElementById('pedido')
 let costo = document.getElementById('costo')
-
-
 
 let agregarOrden = document.getElementById('agregarOrden')
 agregarOrden.addEventListener('click', Servicio.newOrder)
 
 let ordenar = document.getElementById('ordenar')
 ordenar.addEventListener('click', validar)
-
-
 
 function validar(){
 for(let i = 0; i < ordenes.length; i++){

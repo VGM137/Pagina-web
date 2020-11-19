@@ -1,5 +1,5 @@
-import Comida from './Comida.js'
-import Orden from './Orden.js'
+/* import Comida from './Comida.js'
+import Orden from './Orden.js' */
 
 class Servicio{
   constructor(config){

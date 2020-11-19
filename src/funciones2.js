@@ -7,9 +7,12 @@ function Comida(nombre, precio, cantidad) {
 let chicharron = new Comida('Chicharrón', 15, 50)
 let suadero = new Comida('Suadero', 15, 50)
 let rajas = new Comida('Rajas', 15, 50)
+let huevosJamon = new Comida('Huevos con jamón', 15, 50)
+let albondigas = new Comida('Albondigas', 15, 50)
+let huevosCocidos = new Comida('Huevos cocidos', 15, 50)
 
   let menu = []
-  let comidas = menu.push(chicharron, suadero, rajas)
+  let comidas = menu.push(suadero, huevosJamon, albondigas, huevosCocidos)
 
   let pedido = document.getElementById('pedido')
   let costo = document.getElementById('costo')
@@ -149,9 +152,6 @@ let rajas = new Comida('Rajas', 15, 50)
           this.up.type = 'button' 
           this.up.innerText = '+' 
           this.box.appendChild(this.up)
-          /*             this.plus = document.createElement('i')
-          this.plus.classList.add('icon-add-outline')
-          this.up.appendChild(this.plus) */
           this.down = document.createElement('button')
           this.down.id = `down`
           this.down.classList.add('down')
@@ -159,9 +159,7 @@ let rajas = new Comida('Rajas', 15, 50)
           this.down.innerText = '-' 
           this.box.appendChild(this.down)
       
-          this.opcion.innerHTML = opciones.nombre
-
-          
+          this.opcion.innerHTML = opciones.nombre          
         }
       }
     evaluar(){
@@ -183,13 +181,19 @@ let rajas = new Comida('Rajas', 15, 50)
       console.log(suma)
       if(suma < 1){
         this.avisoTacos.style.display = 'flex'
-        this.textoTacos.innerHTML = 'Debes pedir al menos un taco'
-      }else{
-        this.verificarCheck()
+        this.textoTacos.innerHTML = 'Debes pedir al menos un taco.'
+      } else {
+        if(this.avisoTacos){
+          this.avisoTacos.style.display = 'none'
+        }
       }
+      this.verificarCheck()
     }
     verificarCheck(){
       if(this.opcionBox1.checked || this.opcionBox2.checked || this.opcionBox3.checked || this.opcionBox4.checked){
+        if(this.avisoCheck){
+          this.avisoCheck.style.display = 'none'
+        }
         this.formulario = document.createElement('h2')
         this.formulario.id = 'formulario'
         this.formulario.classList.add('formulario')
@@ -232,10 +236,11 @@ let rajas = new Comida('Rajas', 15, 50)
           this.detail.innerHTML = 'Desarmados'
           this.formulario.appendChild(this.detail)
         }
+        formularios.push(this.formulario)
         listo.push('Orden')
       } else {
         this.avisoCheck.style.display = 'flex'
-        this.textoCheck.innerHTML = 'Por favor indicanos como quieres tus tacos'
+        this.textoCheck.innerHTML = '¿Cómo quieres tus tacos?'
         this.eliminarCantidades = this.cantidades.splice(0, this.cantidades.length)
       }
     }
@@ -281,14 +286,10 @@ let rajas = new Comida('Rajas', 15, 50)
           let comida = cliente.platillos.childNodes[i]
           let suma = comida.up
           suma.onclick = () => comida.opcionInput.value++
-        }
-        for(let i = 0; i < menu.length; i++){
-          let comida = cliente.platillos.childNodes[i]
           let resta = comida.down
-          resta.onclick = () => comida.opcionInput.value -= 1 ? comida.opcionInput.value >0  : false
+          resta.onclick = () => comida.opcionInput.value -= 1 ? comida.opcionInput.value > 0  : false
         }
       }) 
-    
   } 
 
   function validar(){
@@ -299,22 +300,37 @@ let rajas = new Comida('Rajas', 15, 50)
   }
 
   function informacion(){
+    let aviso1 = document.getElementById('aviso-nombre')
+    let aviso2 = document.getElementById('aviso-direccion')
+    let aviso3 = document.getElementById('aviso-numero')
     if(!nombre.value.length == 0){
+      if(aviso1){
+        aviso1.style.display = 'none'
+      }
       info.push(nombre.value)
     }else{
+      aviso1.style.display = 'block'
       info.splice(0, info.length)
       console.log('escribe tu nombre')
     }
     if(!direccion.value.length == 0){
+      if(aviso2){
+        aviso2.style.display = 'none'
+      }
       info.push(direccion.value)
     } else {
+      aviso2.style.display = 'block'
       info.splice(0, info.length)
       console.log('escribe tu direccion')
     }
     if(telefono.value.length == 10){
+      if(aviso3){
+        aviso3.style.display = 'none'
+      }
       info.push(telefono.value)
       console.log(info)
     } else {
+      aviso3.style.display = 'block'
       info.splice(0, info.length)
       console.log('escribe tu numero')
     }
@@ -322,6 +338,7 @@ let rajas = new Comida('Rajas', 15, 50)
   }
 
   function order(){
+    debugger
     if(listo.length === ordenes.length & info.length == 3){
       agregarOrden.removeEventListener('click', newOrder)
       /* infoCliente.style.display = 'flex'
@@ -334,13 +351,16 @@ let rajas = new Comida('Rajas', 15, 50)
       var eliminarValores = arrayDeValores.splice(0, arrayDeValores.length)
       var eliminarSubtotales = arrayDeSubtotales.splice(0, arrayDeSubtotales.length)
       var eliminarListo = listo.splice(0, listo.length)
+      var eliminarInfo = info.splice(0, info.length)
       let formulario = document.getElementById('formulario')
       if(formulario){
-        pedido.removeChild(formulario)
-      }
+        formularios.forEach(function(form){
+          pedido.removeChild(form)
+        })}
+      var eliminarForm = formularios.splice(0, formularios.length)
     }
   }
-
+  
   function desplegarTicket(){
     let total = 0
     arrayDeSubtotales.forEach(function(a){total += a;});
@@ -352,12 +372,13 @@ let rajas = new Comida('Rajas', 15, 50)
     console.log(ordenes)
     ordenar.removeEventListener('click', desplegarTicket)
   }
-
+  
   let arrayDePlatos = []
   let arrayDeValores = []
   let arrayDeSubtotales = []
-  let info = []
   let listo = []
+  let info = []
+  let formularios = []
 
   
   let menuDelDia = document.getElementById('menu-del-dia')

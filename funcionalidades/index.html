@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Sagaz</title>
+    <link rel="icon" type="img/png" href="../images/zagaz-logo-bn-06.png">
+    <link rel="stylesheet" href="estilos.css">
+    <link href="https://fonts.googleapis.com/css2?family=Bree+Serif&family=Bungee+Shade&family=Odibee+Sans&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100;0,400;0,700;1,100;1,400;1,700&family=Signika:wght@300;400;700&display=swap" rel="stylesheet">
+    <meta name="viewport" content="width=device-width">
+  </head>
+
+  <body id="body">
+
+    <div class="container" id="container">
+
+      <div class="bar-menu" id="bar-menu">
+        <div class="logo">
+          <figure class="logo-container">
+            <img class="logo-img" src="../images/zagaz-04.png" alt="logo" width="auto" >
+          </figure>
+          <h2 class="slogan">El deleite de su paladar</h2>
+        </div>
+        <nav class="bar-menu-icons">
+          <ol>
+            <li>
+              <a id="menu-del-dia" class="guisado yellow" href="#hero" onclick="goHero()">Menu del día</a>
+            </li>
+            <li>
+              <a id="pregunta" class="pedir" href="#comanda" onclick="goComanda()">Pedir</a>
+            </li>
+            <li>
+              <a id="contacto" class="contacto" href="#contactMe" onclick="goContact()">Contacto</a>
+            </li>
+          </ol>
+        </nav>
+
+      </div>
+      <div id="contenido" class="contenido" onscroll="changeBar()">
+
+        <div class="hero" id="hero">
+          <figure class="hero-imgContainer" action="index.html" method="post">
+            <img class="hero-img" src="../images/sihaysihay.jpg" alt="" width='auto'>
+          </figure>
+          <figure class="hero-menu" action="index.html" method="post">
+            <img width='auto' class="hero-menuImg" src="../images/menu-del-dia.jpg" alt="">
+          </figure>
+        </div>
+
+        <section class="comanda" id="comanda">
+
+          <div class='pregunta'>
+            <h1 class="pregunta-texto">¿Cuántos tacos quieres?</h1>
+          </div>
+
+          <section class='menu' id="menu">
+         <!--    <fieldset class="elegir" id='elegir'>
+
+              <div id="avisoTacos" class="avisoTacos">
+                <p id="textoTacos" class="textoTacos"></p>
+              </div>
+              <section class="platillos">
+                <form id='box' class="box">
+                  <label class="opcion" id=opcion1></label>
+                  <input class="opcionInput" id="opcion1Input" type="number" min="0" value="0" onchange="">
+                </form>
+                <form id='box' class="box">
+                  <label class="opcion" id=opcion2></label>
+                  <input class="opcionInput" id="opcion2Input" type="number" min="0" value="0">
+                </form>
+                <form id='box' class="box">
+                  <label class="opcion" id=opcion3></label>
+                  <input class="opcionInput" id="opcion3Input" type="number" min="0" value="0">
+                </form>
+              </section>
+
+              <div id="avisoCheck" class="avisoCheck">
+                <p id="textoCheck" class="textoCheck"></p>
+              </div>
+              <section class="detalles">
+                <form id='check' class="check">
+                  <label class="option">Con todo</label>
+                  <input class="opcionBox" id="verificar1" type="checkbox" name="" value="">
+                </form>
+                <form id='check' class="check">
+                  <label class="option">Sin arroz</label>
+                  <input class="opcionBox" id="verificar2" type="checkbox" name="" value="">
+                </form>
+                <form id='check' class="check">
+                  <label class="option">Sin salsa</label>
+                  <input name="opcionBox" class="opcionBox" id="verificar3" type="checkbox" name="" value="">
+                </form>
+                <form id='check' class="check">
+                  <label class="option">Desarmados</label>
+                  <input class="opcionBox" id="verificar4" type="checkbox" name="" value="">
+                </form>
+              </section>
+
+            </fieldset> -->
+
+            <div id="agregarOrden" class="agregarOrden" >
+              <div class="agregar">
+                <i class="icon-add-outline"></i>
+                <p class="">Agregar nueva orden</p>
+              </div>
+            </div>
+
+          </section>
+
+          <!-- <form class="boton">
+            <input class='siguiente' id="siguiente" type="button" name="siguiente" value="Siguiente">
+          </form> -->
+
+          <section id="infoCliente" class="info-cliente">
+
+            <fieldset id="entrar-informacion" class="entrar-informacion">
+              <h2 id="titulo-informacion"  class="titulo-informacion">Datos de envío</h2>
+              <!-- <h3 id="descripcion-informacion" class="descripcion-informacion">Proporciónanos tus datos para llevártelo hasta donde estás.</h3> -->
+              <!-- <section id="info" class="info ">-->
+                <div id="reactivo" class="reactivo">
+                  <label id="entrada-nombre" class="entrada-nombre" for="">Nombre:</label>
+                  <input id="nombre" class="entrada" type="text" name="" id="" placeholder="Ingresa tu nombre" minlength="0">
+                  <span class="focus-input">
+                    
+                  </span>
+                </div>
+                <div id="reactivo" class="reactivo">
+                  <label id="entrada-nombre" class="entrada-nombre" for="">Dirección:</label>
+                  <input id="direccion" class="entrada" type="text" name="" id="" placeholder="Ingresa tu dirección">
+                </div>
+                <div id="reactivo" class="reactivo">
+                  <label id="entrada-nombre" class="entrada-nombre" for="">Número telefónico:</label>
+                  <input id="telefono" class="entrada numero" type="number" name="" id="" placeholder="Ingresa tu número" placeholder="Ingresa tu número telefónico" >
+                </div>
+              <!-- </section> -->
+            </fieldset>
+
+          </section>
+
+          <form class="botonOrdenar" id="botonOrdenar">
+            <input class='ordenar' id="ordenar" type="button" name="Ordenar" value="Ordenar">
+          </form>
+
+          <section class="ticket" id='ticket'>
+            <div class="tuOrden" id='tuOrden'>
+              <h2 class="pedido" id='pedido'>Pediste:</h2>
+              <h2 class="costo" id='costo'>Total:</h2>
+            </div>
+          </section>
+
+        </section>
+
+        <!-- <section id="info" class="info">
+          <h1>¿Quién es Sagaz?</h1>
+          <p>Sagaz es el el deleite de tu paladar</p>
+        </section> -->
+
+        <section class="contactMe" id="contactMe">
+
+          <div class="pedidos">
+            <div class="pedidos-texto">
+              <form action="" class="pedidos-form">
+                <h1 class="">Prepara tu evento</h1>
+                <h2 class="">con una taquiza</h2>
+                <input type="text" name="e-mail" id="pedidos-mail" class="pedidos-mail" placeholder="e-mail">
+                <input type="text" name="Déjanos" id="pedidos-mensaje" class="pedidos-mensaje" placeholder="Déjanos tu mensaje">
+                <button class="pedidos-button" id="pedidos-button">Enviar</button>
+              </form>
+            </div>
+            <div class="social">
+              <h1>Siguenos en:</h1>
+              <a class="icono-redes" href="https://www.facebook.com/victor.garza.315"><i class="icon-facebook"></i>Sagaz</a>
+              <a class="icono-redes" href="https://www.instagram.com/sagaz_takosu/?hl=es-la"><i class="icon-instagram"></i>@sagaz_takosu</a>
+              <a class="icono-redes" href=""><i class="icon-whatsapp"></i>55 2894 7194</a>
+            </div>
+          </div>
+
+          <footer class="footer">
+            <div class="footer-logo">
+              <img src="../images/zagaz-logo-blanco-05.png" height="50px" alt="logo">
+              <h3>El deleite de su paladar</h3>
+            </div>
+            <div class="footer-creator">
+              <p>Created by <a href="https://twitter.com/VicGMD">@VicGMD</a></p>
+            </div>
+          </footer>
+        </section>
+
+
+  </body>
+  <script type="module" src="index.js  " >
+
+  </script>
+</html>
