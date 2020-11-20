@@ -633,16 +633,25 @@ h1{
     .pedidos-mail{
       height: 10%;
       width: 90%;
+      font-family: inherit;
+      font-size: 1em;
       margin: 10px auto;
+      padding: 5px;
       display: flex;
       border-radius: 5px;
+      box-sizing: border-box;
     }
     .pedidos-mensaje{
       height: 100px;
       width: 90%;
+      font-family: inherit;
+      font-size: 1em;
       margin: 10px auto;
-      display: flex;
+      padding: 5px;
+      display: block;
       border-radius: 5px;
+      overflow: auto;
+      box-sizing: border-box;
     }
     .pedidos-button{
       display: flex;
@@ -915,7 +924,7 @@ h1{
       margin: 10px auto;
     }
     .elegir{
-      width: 90%;
+      width: 75%;
       margin: 15px auto;
     }
     .agregarOrden p{

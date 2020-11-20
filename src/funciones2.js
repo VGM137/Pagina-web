@@ -426,6 +426,6 @@ let huevosCocidos = new Comida('Huevos cocidos', 15, 50)
      } else { 
        quitarResaltar(contact)
      }
-     console.log(ev)
+     console.log()
   }
 
