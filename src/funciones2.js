@@ -25,12 +25,20 @@ let huevosCocidos = new Comida('Huevos cocidos', 15, 50)
   let ordenar = document.getElementById('ordenar')
   ordenar.addEventListener('click', validar)
   
-
   let nombre = document.getElementById('nombre')
   let direccion = document.getElementById('direccion')
   let telefono = document.getElementById('telefono')
 
-  /* let ordenar = document.getElementById('botonOrdenar') */
+  const cuentaDeOrdenes = () => {
+    var guardarOrden = 0
+    const contarOrden = (orden) => {
+      guardarOrden += orden
+      console.log(`${guardarOrden}`)
+    }
+    return contarOrden
+  }
+  
+  let miCuentaDeOrdenes = cuentaDeOrdenes()
   
   class Servicio{
     constructor(){
@@ -39,10 +47,12 @@ let huevosCocidos = new Comida('Huevos cocidos', 15, 50)
   }
   class Orden{
     constructor(){
+      this.cuenta = ordenes.length + 1
+      console.log(this.cuenta)
       this.agregarOrden = document.getElementById('agregarOrden')
       this.menu = document.getElementById('menu')
       this.elegir = document.createElement('fieldset')
-      this.elegir.id = `elegir`
+      this.elegir.id = `elegir${this.cuenta}`
       this.elegir.classList.add(`elegir`)
       this.menu.insertBefore(this.elegir, this.agregarOrden)
         this.avisoTacos = document.createElement('div')
@@ -126,6 +136,19 @@ let huevosCocidos = new Comida('Huevos cocidos', 15, 50)
             this.opcionBox4.classList.add('opcionBox')
             this.opcionBox4.type = 'checkbox'
             this.check4.appendChild(this.opcionBox4)
+          if(this.cuenta > 1){
+            this.delete = document.createElement('button')
+            this.delete.id = 'delete-order'
+            this.delete.classList.add('delete-order')
+            this.delete.innerText = 'x'
+            this.elegir.appendChild(this.delete)
+            this.delete.onclick = () => {
+              this.menu.removeChild(this.elegir)
+              this.eliminar()
+            }
+          }
+          this.aumentarDisminuir()
+          this.checks()
           this.evaluar
     }
     insertarOpciones(){
@@ -161,7 +184,60 @@ let huevosCocidos = new Comida('Huevos cocidos', 15, 50)
       
           this.opcion.innerHTML = opciones.nombre          
         }
+    }
+    aumentarDisminuir(){
+      let elect = this.elegir.childNodes[1]
+      for(let i = 0; i < menu.length; i++){
+        let comida = elect.childNodes[i]
+        let suma = comida.up
+        suma.onclick = () => comida.opcionInput.value++
+        let resta = comida.down
+        resta.onclick = () => comida.opcionInput.value -= 1 ? comida.opcionInput.value > 0  : false
       }
+    }
+    checks(){
+      this.opcionBox1.onclick = () => {
+        if (this.opcionBox1.checked){
+            this.opcionBox1.checked = true
+            this.opcionBox2.checked = false
+            this.opcionBox3.checked = false
+            this.opcionBox4.checked = false
+          }else{
+            this.opcionBox1.checked = false
+          }
+        }
+        this.opcionBox2.onclick = () => {
+          if (this.opcionBox2.checked){
+            this.opcionBox2.checked = true
+            this.opcionBox1.checked = false
+          }
+        }
+        this.opcionBox3.onclick = () => {
+         if (this.opcionBox3.checked){
+          this.opcionBox3.checked = true
+          this.opcionBox1.checked = false
+          }
+        }
+        this.opcionBox4.onclick = () => {
+          if (this.opcionBox4.checked){
+            this.opcionBox4.checked = true
+            this.opcionBox1.checked = false
+          }
+        }
+    }
+    eliminar(){
+      this.elimina = this.cuenta - 1
+      this.borrar = ordenes.splice(this.elimina, 1)
+      let cuenta = this.cuenta
+      ordenes.forEach(function(o){
+        if(o.cuenta > cuenta){
+          o.cuenta -= 1
+          o.elegir.id = `elegir${o.cuenta}`
+        }
+      })
+      console.log(ordenes)
+      console.log(this.borrar)
+    }
     evaluar(){
       this.plato = this.platillos.childNodes
       this.valores(this.plato)
@@ -197,7 +273,7 @@ let huevosCocidos = new Comida('Huevos cocidos', 15, 50)
         this.formulario = document.createElement('h2')
         this.formulario.id = 'formulario'
         this.formulario.classList.add('formulario')
-        this.formulario.innerHTML = 'Orden:'
+        this.formulario.innerHTML = `Orden ${this.cuenta}:`
         pedido.appendChild(this.formulario)
         for(let i = 0; i <= this.cantidades.length; i++){
           this.numero = this.cantidades[i]
@@ -247,50 +323,11 @@ let huevosCocidos = new Comida('Huevos cocidos', 15, 50)
   }
 
   function newOrder (){
+      miCuentaDeOrdenes(1)
       let nuevaOrden = new Orden()
       ordenes.push(nuevaOrden)
       console.log(ordenes)
-      ordenes.forEach(function(orden){
-        orden.opcionBox1.onclick = () => {
-        if (orden.opcionBox1.checked){
-            orden.opcionBox1.checked = true
-            orden.opcionBox2.checked = false
-            orden.opcionBox3.checked = false
-            orden.opcionBox4.checked = false
-          }else{
-            orden.opcionBox1.checked = false
-          }
-        }
-        orden.opcionBox2.onclick = () => {
-          if (orden.opcionBox2.checked){
-            orden.opcionBox2.checked = true
-            orden.opcionBox1.checked = false
-          }
-        }
-        orden.opcionBox3.onclick = () => {
-         if (orden.opcionBox3.checked){
-          orden.opcionBox3.checked = true
-          orden.opcionBox1.checked = false
-          }
-        }
-        orden.opcionBox4.onclick = () => {
-          if (orden.opcionBox4.checked){
-            orden.opcionBox4.checked = true
-            orden.opcionBox1.checked = false
-          }
-        }
-      })
-      ordenes.forEach(function (orden){
-        let cliente = orden
-        for(let i = 0; i < menu.length; i++){
-          let comida = cliente.platillos.childNodes[i]
-          let suma = comida.up
-          suma.onclick = () => comida.opcionInput.value++
-          let resta = comida.down
-          resta.onclick = () => comida.opcionInput.value -= 1 ? comida.opcionInput.value > 0  : false
-        }
-      }) 
-  } 
+  }
 
   function validar(){
     for(let i = 0; i < ordenes.length; i++){
@@ -375,7 +412,6 @@ let huevosCocidos = new Comida('Huevos cocidos', 15, 50)
   let listo = []
   let info = []
   let formularios = []
-
   
   let menuDelDia = document.getElementById('menu-del-dia')
   let pregunta = document.getElementById('pregunta')
@@ -428,4 +464,3 @@ let huevosCocidos = new Comida('Huevos cocidos', 15, 50)
      }
      console.log()
   }
-

@@ -180,11 +180,6 @@ ul{
   margin: 10px auto;
   font-size: 1.2em;
 }
-/* .header ol {
-  display: flex;
-  height: inherit;
-  align-items: center;
-} */
 .guisado, .pedir, .conocenos, .contacto {
   display: flex;
   text-decoration: none;
@@ -323,7 +318,8 @@ h1{
   }
   .elegir{
     border: none;
-    width: 90%;
+    position: relative;
+    width: 80%;
     height: auto;
     border-radius: 10px;
     margin: auto;
@@ -333,9 +329,21 @@ h1{
     display: block;
     box-shadow: 0px 0px 16px 0px #626262;
   }
- /*    .avisoTacos{
-      display: none
-    } */
+    .delete-order{
+      position: absolute;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 20px;
+      width: 20px;
+      border-radius: 50%;
+      border: none;
+      z-index: 1;
+      top: 15px;
+      left: 15px;
+      color:  white;
+      background-color:  rgba(122, 122, 122, 0.5);
+    }
     .platillos{
       margin: 10px ;
     }
@@ -575,6 +583,7 @@ h1{
       }
       .formulario{
         font-size: 1em;
+        margin: 30px auto;
       }
       .orden-de-pedido, .detail{
         margin: 5px auto;
@@ -945,7 +954,9 @@ h1{
       width: 100%;
       height: auto;
     }
-
+    .ticket{
+      width: 90%;
+    }
     .social{
       width: 100%;
       height: auto;
