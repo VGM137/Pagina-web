@@ -313,6 +313,7 @@ h1{
     grid-template-columns: 1fr 1fr 1fr;
     grid-template-rows: minmax(200px, max-content);
     grid-gap: 10px;
+    grid-row-gap: 20px;
     grid-auto-flow: row;
     box-sizing: border-box;
   }
@@ -323,10 +324,10 @@ h1{
     height: auto;
     border-radius: 10px;
     margin: auto;
-    margin-bottom: 10px;
     padding: 10px 20px;
     background-color: white;
     display: block;
+    box-sizing: border-box;
     box-shadow: 0px 0px 16px 0px #626262;
   }
     .delete-order{
@@ -343,7 +344,7 @@ h1{
       left: 15px;
       color:  white;
       background-color:  rgba(122, 122, 122, 0.5);
-    }
+    }  
     .platillos{
       margin: 10px ;
     }

@@ -8,10 +8,8 @@ let rajas = new Comida('Rajas', 15, 50)
 
 let menu = []
 let comidas = Servicio.menu.push(chicharron, suadero, rajas) */
-let body = document.getElementById('body')
-body.onload = function nuevoServicio(){
-  new Servicio({ el: ordenes, plugins: [new Orden()] })
-}
+let menu = document.getElementById('menu')
+let 
 
 let ordenes = []
 

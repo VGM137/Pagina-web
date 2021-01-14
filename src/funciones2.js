@@ -236,7 +236,6 @@ let huevosCocidos = new Comida('Huevos cocidos', 15, 50)
         }
       })
       console.log(ordenes)
-      console.log(this.borrar)
     }
     evaluar(){
       this.plato = this.platillos.childNodes
