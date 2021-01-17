@@ -4,6 +4,4 @@ function Comida(nombre, precio, cantidad) {
   this.cantidad = cantidad
 }
 
-
-
 export default Comida

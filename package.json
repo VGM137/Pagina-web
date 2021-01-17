@@ -19,5 +19,6 @@
   "homepage": "https://github.com/VGM137/Pagina-web#readme",
   "devDependencies": {
     "live-server": "^1.2.1"
-  }
+  },
+  "dependencies": {}
 }

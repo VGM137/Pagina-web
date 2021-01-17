@@ -1,58 +1,61 @@
-/* import Comida from './Comida.js'
-import Orden from './Orden.js' */
+/* import Comida from './Comida.js' */
+import Orden from './Orden.js'
+
+/* import hoyEnSagaz from './menu' */
 
 class Servicio{
-  constructor(config){
-  this.array = config.el
-  this.menu = []
-  this.chicharron = new Comida('Chicharrón', 15, 50)
-  this.suadero = new Comida('Suadero', 15, 50)
-  this.rajas = new Comida('Rajas', 15, 50)
-  this.menu.push(this.chicharron, this.suadero, this.rajas)
-  this.newOrder()
-  this.arrayDeSubtotales = []
+
+
+  constructor(){
+    
+    this.ordenes = []
+    this.newOrder()
+    this.agregar = document.getElementById('agregarOrden')
+    this.agregar.onclick = () => this.newOrder()
+    this.eliminar
   }
 
-  newOrder (){
-    let nuevaOrden = new Orden({ el: this.menu, el2: this.arrayDeSubtotales })
-    this.array.push(nuevaOrden)
-    console.log(this.array)
-    this.array.forEach(function(orden){
-      orden.opcionBox1.onclick = () => {
-      if (orden.opcionBox1.checked){
-          orden.opcionBox1.checked = true
-          orden.opcionBox2.checked = false
-          orden.opcionBox3.checked = false
-          orden.opcionBox4.checked = false
-        }else{
-          orden.opcionBox1.checked = false
-        }
-      }
-      orden.opcionBox2.onclick = () => {
-        if (orden.opcionBox2.checked){
-          orden.opcionBox2.checked = true
-          orden.opcionBox1.checked = false
-        }
-      }
-      orden.opcionBox3.onclick = () => {
-       if (orden.opcionBox3.checked){
-        orden.opcionBox3.checked = true
-        orden.opcionBox1.checked = false
-        }
-      }
-      orden.opcionBox4.onclick = () => {
-        if (orden.opcionBox4.checked){
-          orden.opcionBox4.checked = true
-          orden.opcionBox1.checked = false
-        }
-      }
-    })
-  }
-
-  
-}
-    Servicio.prototype.push = function (){
-      this.array.push()
+/*   cuenta () {
+    var saveCoins = 0
+    const countCoins = (coins) => {
+      saveCoins += coins
+      console.log(`Hay ${saveCoins} activos.`)
     }
+    return countCoins 
+  }*/
+
+  async newOrder (){
+/*     let miCuenta = this.cuenta()
+    miCuenta(1) */
+    this.cuenta = this.ordenes.length
+    let nuevaOrden = await new Orden(this.cuenta)
+    this.ordenes.push(nuevaOrden)
+    console.log(this.ordenes)
+    console.log(this.cuenta)
+    /*     console.log(ordenes) */
+  }
+}
+
+Servicio.prototype.splice = function(){
+  this.ordenes.splice()
+}
+Servicio.prototype.eliminar = function(cuenta){
+/*   debugger */
+  let elimina = cuenta - 1
+  console.log(this.ordenes)
+  this.ordenes.splice(elimina, 1)
+/*     let cuenta = this.cuenta */
+  this.ordenes.forEach(function(o){
+    if(o.cuenta > cuenta){
+      o.cuenta -= 1
+      o.elegir.id = `elegir${o.cuenta}`
+    }
+  })
+  console.log(this.ordenes)
+}
+/*     Servicio.prototype.push = function (){
+      this.ordenes.push()
+    } */
+
 
 export default Servicio

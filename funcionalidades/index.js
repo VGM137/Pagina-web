@@ -1,17 +1,14 @@
+
+
 import Comida from './Comida.js'
 import Servicio from './Servicio.js'
 import Orden from './Orden.js'
 
-/* let chicharron = new Comida('Chicharrón', 15, 50)
-let suadero = new Comida('Suadero', 15, 50)
-let rajas = new Comida('Rajas', 15, 50)
-
-let menu = []
-let comidas = Servicio.menu.push(chicharron, suadero, rajas) */
+/* let ordenes = [] */
 let menu = document.getElementById('menu')
-let 
-
-let ordenes = []
+let servicio = new Servicio({ 
+  el: menu
+})
 
 let pedido = document.getElementById('pedido')
 let costo = document.getElementById('costo')
