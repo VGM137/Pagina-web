@@ -9,7 +9,6 @@ let rajas = new Comida('Rajas', 15, 50)
 let menu = []
 let comidas = Servicio.menu.push(chicharron, suadero, rajas) */
 let menu = document.getElementById('menu')
-let 
 
 let ordenes = []
 
