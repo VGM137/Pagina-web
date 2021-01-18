@@ -1,11 +1,11 @@
 import Servicio from './Servicio.js'
 import hoyEnSagaz from './menu.js'
-
+import { formularios, listo, arrayDeSubtotales } from './arreglos.js'
 
   class Orden{
-    constructor(cuenta){
-      this.cuenta = cuenta + 1
-      console.log(this.cuenta)
+    constructor(cuenta){      
+      this.numeroDeOrden = cuenta + 1
+      console.log(`La cuenta va en: ${this.numeroDeOrden}`)
       this.agregarOrden = document.getElementById('agregarOrden')
       this.menu = document.getElementById('menu')
       this.elegir = document.createElement('fieldset')
@@ -93,7 +93,7 @@ import hoyEnSagaz from './menu.js'
             this.opcionBox4.classList.add('opcionBox')
             this.opcionBox4.type = 'checkbox'
             this.check4.appendChild(this.opcionBox4)
-          if(this.cuenta > 1){
+          if(this.numeroDeOrden > 1){
             this.delete = document.createElement('button')
             this.delete.id = 'delete-order'
             this.delete.classList.add('delete-order')
@@ -101,7 +101,7 @@ import hoyEnSagaz from './menu.js'
             this.elegir.appendChild(this.delete)
             this.delete.onclick = () => {
               this.menu.removeChild(this.elegir)
-              Servicio.prototype.eliminar(this.cuenta)
+              Servicio.prototype.eliminar(this.numeroDeOrden)
             }
           }
           this.aumentarDisminuir()
@@ -182,24 +182,23 @@ import hoyEnSagaz from './menu.js'
           }
         }
     }
-
     evaluar(){
       this.plato = this.platillos.childNodes
       this.valores(this.plato)
     }
     valores(plato){
       this.cantidades = []
-      for(let n = 0; n < menu.length; n++){
+      for(let n = 0; n < hoyEnSagaz.length; n++){
         this.numeros = parseInt(plato[n].opcionInput.value)
         this.cantidades.push(this.numeros)
-    }
-    this.verificarCantidad(this.cantidades)
-    console.log(this.cantidades)
+      }
+      console.log(this.cantidades)
+      this.verificarCantidad(this.cantidades)
     }
     verificarCantidad(cantidades){
       let suma = 0
       cantidades.forEach(function(cantidad){suma += cantidad;});
-      console.log(suma)
+      console.log(`Número de tacos totales en la orden ${this.numeroDeOrden}: ${suma}`)
       if(suma < 1){
         this.avisoTacos.style.display = 'flex'
         this.textoTacos.innerHTML = 'Debes pedir al menos un taco.'
@@ -218,11 +217,11 @@ import hoyEnSagaz from './menu.js'
         this.formulario = document.createElement('h2')
         this.formulario.id = 'formulario'
         this.formulario.classList.add('formulario')
-        this.formulario.innerHTML = `Orden ${this.cuenta}:`
+        this.formulario.innerHTML = `Orden ${this.numeroDeOrden}:`
         pedido.appendChild(this.formulario)
         for(let i = 0; i <= this.cantidades.length; i++){
           this.numero = this.cantidades[i]
-          this.tacos = menu[i]
+          this.tacos = hoyEnSagaz[i]
           if(this.numero > 0){
               this.ordenDePedido = document.createElement('p')
               this.ordenDePedido.classList.add( 'orden-de-pedido')
